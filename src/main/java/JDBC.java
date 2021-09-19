@@ -31,7 +31,7 @@ public class JDBC {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/gradingsystem";
             String user = "root";
-            String password = "Marshallaw1";
+            String password = "Chocolate123";
             connection = DriverManager.getConnection(url, user, password);
 
         }
@@ -44,7 +44,7 @@ public class JDBC {
             String strCurrentLine = null;
 
             BufferedReader sqlReader = new BufferedReader(new FileReader(
-                    "C:\\Users\\aakif\\IdeaProjects\\Project1\\src\\main\\sql\\gsdatabase.sql"));
+                    "...\\sql\\gsdatbase.sql"));
             while ((strCurrentLine = sqlReader.readLine()) != null) {
                 statement.executeUpdate(strCurrentLine);
             }
