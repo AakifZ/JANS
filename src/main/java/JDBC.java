@@ -1,15 +1,12 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class JDBC {
     static Connection connection = null;
-
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         while (true) {
@@ -17,36 +14,40 @@ public class JDBC {
                 connector();
                 break;
             } catch (SQLException e) {
-                System.out.println("Could not connect to database. ");
+                System.out.println("Could not connect to database.");
                 continue;
             }
         }
         reader(connection);
     }
 
-
     public static void connector() throws ClassNotFoundException, SQLException {
-
             // establish connection
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/gradingsystem";
+            String url = "jdbc:mysql://localhost:3306";
             String user = "root";
-            String password = "Chocolate123";
+            String password = "";
             connection = DriverManager.getConnection(url, user, password);
-
         }
-
 
     public static void reader(Connection connection1) throws IOException {
         try {
             Statement statement = connection1.createStatement();
-
             String strCurrentLine = null;
+            String fileString = "";
 
-            BufferedReader sqlReader = new BufferedReader(new FileReader(
-                    "...\\sql\\gsdatbase.sql"));
+            BufferedReader sqlReader = new BufferedReader(new FileReader("src\\main\\sql\\gsdatabase.sql"));
+
             while ((strCurrentLine = sqlReader.readLine()) != null) {
-                statement.executeUpdate(strCurrentLine);
+                if(strCurrentLine.length() < 1 || strCurrentLine.substring(0,2).equals("--")) {
+                    continue;
+                }
+                fileString += strCurrentLine;
+            }
+
+            String[] queries = fileString.split(";");
+            for (String q: queries) {
+                statement.executeUpdate(q);
             }
 
             sqlReader.close();
@@ -59,7 +60,5 @@ public class JDBC {
         } catch (Exception e) {
             System.out.println("Unexpected Error has Occurred.");
         }
-
     }
-
 }
