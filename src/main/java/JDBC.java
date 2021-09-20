@@ -3,23 +3,23 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
 
 public class JDBC {
     static Connection connection = null;
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        while (true) {
+    public static void main(String[] args) throws ClassNotFoundException {
+
             try {
                 connector();
                 DBCreationReader();
-                break;
             } catch (SQLException e) {
                 System.out.println("Could not connect to database.\n   Please try again later.");
-                break;
             }
-        }
-        System.out.println(addStudent("Berry", "Johnsons", "berJo@gmail.com"));
+
+        System.out.println(addStudent("Berry", "Johnson", "berJo@gmail.com"));
+        System.out.println(addStudent("Jimmy", "Neutron", "brainblast@gmail.com"));
+        System.out.println(deleteStudent(1));
+        System.out.println(addStudent("Barney", "The big red dog", "berensteinbears@gmail.com"));
     }
 
     public static void connector() throws ClassNotFoundException, SQLException {
@@ -31,22 +31,22 @@ public class JDBC {
         connection = DriverManager.getConnection(url, user, password);
     }
 
-    public static void DBCreationReader() throws IOException {
+    public static void DBCreationReader() {
         try {
             Statement statement = connection.createStatement();
-            String strCurrentLine = null;
-            String fileString = "";
+            String strCurrentLine;
+            StringBuilder fileString = new StringBuilder();
 
             BufferedReader sqlReader = new BufferedReader(new FileReader("src\\main\\sql\\gsdatabase.sql"));
 
             while ((strCurrentLine = sqlReader.readLine()) != null) {
-                if (strCurrentLine.length() < 1 || strCurrentLine.substring(0, 2).equals("--")) {
+                if (strCurrentLine.length() < 1 || strCurrentLine.startsWith("--")) {
                     continue;
                 }
-                fileString += strCurrentLine;
+                fileString.append(strCurrentLine);
             }
 
-            String[] queries = fileString.split(";");
+            String[] queries = fileString.toString().split(";");
             for (String q : queries) {
                 statement.executeUpdate(q);
             }
@@ -66,9 +66,9 @@ public class JDBC {
     /**
      * Adds a student to the database and auto assigns the student an ID number
      *
-     * @param firstName
-     * @param lastName
-     * @param email
+     * @param firstName The student's first name
+     * @param lastName The student's last name
+     * @param email The student's email address
      * @return true if the student was added to the database
      * false if the student could not be added to the database
      */
@@ -80,6 +80,18 @@ public class JDBC {
             result = statement.executeUpdate(query);
         } catch (SQLException e) {
             System.out.println("There was a problem adding the student. Please try again.");
+        }
+        return result > 0;
+    }
+
+    public static boolean deleteStudent(int IDNumber) {
+        int result = 0;
+        try {
+            Statement statement = connection.createStatement();
+            String query = String.format("delete from student where student_ID = %d", IDNumber);
+            result = statement.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println("There was a problem deleting the student. Please try again.");
         }
         return result > 0;
     }
