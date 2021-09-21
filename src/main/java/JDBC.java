@@ -156,7 +156,6 @@ public class JDBC {
             Statement statement = connection.createStatement();
             String query = String.format("select exam_grade from student_exam where student_ID, exam_number values('%d', '%d')", IDNumber, ExamNumber);
             ResultSet result = statement.executeQuery(query);
-
             while (result.next()){
                 score = result.getInt("exam_grade");
             }
