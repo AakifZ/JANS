@@ -126,7 +126,7 @@ DROP TABLE IF EXISTS `gradingsystem`.`student_exam` ;
 CREATE TABLE IF NOT EXISTS `gradingsystem`.`student_exam` (
                                                               `student_ID` INT NOT NULL,
                                                               `exam_number` INT NOT NULL,
-                                                              `exam_grade` DECIMAL NOT NULL,
+                                                              `exam_grade` INT NOT NULL,
                                                               PRIMARY KEY (`student_ID`, `exam_number`),
     INDEX `exam_number_idx` (`exam_number` ASC) VISIBLE,
     CONSTRAINT `exam_student_ID`
