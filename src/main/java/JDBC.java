@@ -56,7 +56,6 @@ public class JDBC {
             for (String q : queries) {
                 statement.executeUpdate(q);
             }
-
             sqlReader.close();
 
         } catch (SQLException a) {
