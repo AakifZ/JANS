@@ -33,7 +33,7 @@ public class JDBC {
         Class.forName("com.mysql.cj.jdbc.Driver");
         String url = "jdbc:mysql://localhost:3306";
         String user = "root";
-        String password = "Marshallaw1";
+        String password = "Chocolate123";
         connection = DriverManager.getConnection(url, user, password);
     }
 
@@ -82,7 +82,7 @@ public class JDBC {
         int result = 0;
         try {
             Statement statement = connection.createStatement();
-            String query = String.format("insert into student(first_name, last_name, email, gpa,) values('%s', '%s', '%s', '%f')", firstName, lastName, email, gpa);
+            String query = String.format("insert into student(first_name, last_name, email, gpa) values('%s', '%s', '%s', '%f')", firstName, lastName, email, gpa);
             result = statement.executeUpdate(query);
         } catch (SQLException e) {
             System.out.println("There was a problem adding the student. Please try again.");
@@ -102,7 +102,7 @@ public class JDBC {
         int result = 0;
         try {
             Statement statement = connection.createStatement();
-            String query = String.format("insert into student_exam(exam_grade) where student_ID, exam_number, exam_grade values ('%d', '%d', '%d')", IDNumber, ExamNumber, ExamScore);
+            String query = String.format("insert into student_exam(student_ID, exam_number, exam_grade) values ('%d', '%d', '%d')", IDNumber, ExamNumber, ExamScore);
             result = statement.executeUpdate(query);
         } catch (SQLException e){
             System.out.println("There was a problem adding exam score");
