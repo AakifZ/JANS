@@ -60,6 +60,7 @@ CREATE TABLE IF NOT EXISTS `gradingsystem`.`student` (
                                                          `first_name` VARCHAR(45) NOT NULL,
     `last_name` VARCHAR(45) NOT NULL,
     `email` VARCHAR(45) NOT NULL,
+    `gpa` DECIMAL NOT NULL,
     PRIMARY KEY (`student_ID`))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8mb4
