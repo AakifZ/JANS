@@ -1,12 +1,14 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.math.BigDecimal;
 import java.sql.*;
+import java.util.Scanner;
 
 public class JDBC {
     static Connection connection = null;
 
     public static void main(String[] args) throws ClassNotFoundException {
-
         try {
             connector();
             DBCreationReader();
@@ -30,10 +32,12 @@ public class JDBC {
 
     public static void connector() throws ClassNotFoundException, SQLException {
         // establish connection
+
         Class.forName("com.mysql.cj.jdbc.Driver");
         String url = "jdbc:mysql://localhost:3306";
         String user = "root";
         String password = "Chocolate123";
+
         connection = DriverManager.getConnection(url, user, password);
     }
 
