@@ -20,6 +20,8 @@ USE `gradingsystem` ;
 -- -----------------------------------------------------
 -- Table `gradingsystem`.`professor`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `gradingsystem`.`professor` ;
+
 CREATE TABLE IF NOT EXISTS `gradingsystem`.`professor` (
                                                            `professor_ID` INT NOT NULL AUTO_INCREMENT,
                                                            `first_name` VARCHAR(45) NOT NULL,
@@ -35,6 +37,8 @@ CREATE TABLE IF NOT EXISTS `gradingsystem`.`professor` (
 -- -----------------------------------------------------
 -- Table `gradingsystem`.`course`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `gradingsystem`.`course` ;
+
 CREATE TABLE IF NOT EXISTS `gradingsystem`.`course` (
                                                         `course_ID` INT NOT NULL AUTO_INCREMENT,
                                                         `professor_ID` INT NOT NULL,
@@ -53,6 +57,8 @@ CREATE TABLE IF NOT EXISTS `gradingsystem`.`course` (
 -- -----------------------------------------------------
 -- Table `gradingsystem`.`student`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `gradingsystem`.`student` ;
+
 CREATE TABLE IF NOT EXISTS `gradingsystem`.`student` (
                                                          `student_ID` INT NOT NULL AUTO_INCREMENT,
                                                          `first_name` VARCHAR(45) NOT NULL,
@@ -69,6 +75,8 @@ CREATE TABLE IF NOT EXISTS `gradingsystem`.`student` (
 -- -----------------------------------------------------
 -- Table `gradingsystem`.`course_enrollment`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `gradingsystem`.`course_enrollment` ;
+
 CREATE TABLE IF NOT EXISTS `gradingsystem`.`course_enrollment` (
                                                                    `student_ID` INT NOT NULL,
                                                                    `course_ID` INT NOT NULL,
@@ -89,6 +97,8 @@ CREATE TABLE IF NOT EXISTS `gradingsystem`.`course_enrollment` (
 -- -----------------------------------------------------
 -- Table `gradingsystem`.`exam`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `gradingsystem`.`exam` ;
+
 CREATE TABLE IF NOT EXISTS `gradingsystem`.`exam` (
                                                       `exam_number` INT NOT NULL AUTO_INCREMENT,
                                                       `name` VARCHAR(45) NULL DEFAULT NULL,
@@ -102,6 +112,8 @@ CREATE TABLE IF NOT EXISTS `gradingsystem`.`exam` (
 -- -----------------------------------------------------
 -- Table `gradingsystem`.`student_exam`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `gradingsystem`.`student_exam` ;
+
 CREATE TABLE IF NOT EXISTS `gradingsystem`.`student_exam` (
                                                               `student_ID` INT NOT NULL,
                                                               `exam_number` INT NOT NULL,
@@ -122,6 +134,8 @@ CREATE TABLE IF NOT EXISTS `gradingsystem`.`student_exam` (
 -- -----------------------------------------------------
 -- Table `gradingsystem`.`sysadmin`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `gradingsystem`.`sysadmin` ;
+
 CREATE TABLE IF NOT EXISTS `gradingsystem`.`sysadmin` (
                                                           `admin_ID` INT NOT NULL AUTO_INCREMENT,
                                                           `first_name` VARCHAR(45) NOT NULL,
