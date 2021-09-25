@@ -1,4 +1,3 @@
-import javax.swing.plaf.nimbus.State;
 import java.io.*;
 import java.math.BigDecimal;
 import java.sql.*;
@@ -130,7 +129,6 @@ public class JDBC {
             result = statement.executeUpdate(query);
         } catch (SQLException e){
             System.out.println("There was a problem adding exam score");
-            e.printStackTrace();
         }
         return result > 0;
     }
@@ -170,6 +168,7 @@ public class JDBC {
             }
         } catch (SQLException e) {
             System.out.println("There was a problem locating the student's GPA");
+
         }
         return gpa;
     }
@@ -268,5 +267,18 @@ public class JDBC {
             System.out.println("The class grade average could not be calculated.");
         }
         return avg;
+    }
+    public static boolean addProfessor(String firstName, String lastName, String email, int professor_ID) {
+        int result = 0;
+        try {
+            Statement statement = connection.createStatement();
+            String query = String.format("insert into professor where professor_ID, first_name, last_name, email ('%d', '%s', '%s','%s')", professor_ID, firstName, lastName, email);
+            result = statement.executeUpdate(query);
+
+        } catch (SQLException e) {
+            System.out.println("Problem has occurred and the professor could not be added");
+        }
+        return result > 0;
+
     }
 }
