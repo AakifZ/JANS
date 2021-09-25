@@ -2,16 +2,18 @@
 <html lang="en">
 <head>
     <link href="gradeStyle.css" rel="stylesheet">
+    <script src="gradingSysJS.js"></script>
 </head>
 
-<title>JANS HS Classlist</title>
+<title>J.A.N.S University Class list</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
 
 <div class="headerTitle">
-    <h1>Class List</h1>
+    <h1>J.A.N.S University</h1>
 </div>
+
 <!hyperlink>
 <div class="tabs">
 
@@ -22,15 +24,18 @@
 </div>
 
 
-
-<div class="speech">
-    <p>To create a new class for the semester. Enter the description of the class below.</p>
+<div class="headerTitle">
+    <h2><b>Class List</b></h2>
 </div>
+
 <br>
 <br>
 
 <div class="textFormat">
-    <input id="inputOne" placeholder="Enter Class Name" type="text"/>
+    <p><b>Add course:</b></p>
+    <br>
+    <br>
+   <input id="inputOne" placeholder="Enter Class Name" type="text"/>
     <br>
     <br>
     <input id="inputTwo" placeholder="Enter Date" type="text"/>
@@ -39,7 +44,28 @@
     <input id="inputThree" placeholder="Enter Description" type="text"/>
     <br>
     <br>
-    <button type="button">Create Class</button>
+    <div>
+        <button onclick="addClass()">Create Class</button>
+    </div>
+
+</div>
+
+<br>
+<br>
+
+<div class="display">
+    <h3>Added classes: </h3>
+    <div id="displayClass"></div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="headerTitleOne">
+<p>Copyrighted by the J.A.N.S University peeps.</p>
 </div>
 
 </body>
