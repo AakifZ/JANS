@@ -93,18 +93,18 @@ public class JDBC {
     /**
      * Adds the exam score for the corresponding Student
      *
-     * @param IDNumber the Students ID number
+     * @param IDNumber   the Students ID number
      * @param ExamNumber The Exam number where the score needs to be added
-     * @param ExamScore the Exam score that is added
+     * @param ExamScore  the Exam score that is added
      * @return returns true if score is added, false if score is not added
      */
-    public static boolean addExamScore(int IDNumber, int ExamNumber, int ExamScore){
+    public static boolean addExamScore(int IDNumber, int ExamNumber, int ExamScore) {
         int result = 0;
         try {
             Statement statement = connection.createStatement();
             String query = String.format("insert into student_exam(exam_grade) where student_ID, exam_number, exam_grade values ('%d', '%d', '%d')", IDNumber, ExamNumber, ExamScore);
             result = statement.executeUpdate(query);
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("There was a problem adding exam score");
         }
         return result > 0;
@@ -145,24 +145,38 @@ public class JDBC {
 
     /**
      * gets the exam score for the corresponding student
-     * @param IDNumber the student ID number used to add the score
+     *
+     * @param IDNumber   the student ID number used to add the score
      * @param ExamNumber the exam number where the score is added
      * @return returns the student score
      */
-    public static int getStudentExamScore(int IDNumber, int ExamNumber){
+    public static int getStudentExamScore(int IDNumber, int ExamNumber) {
         int score = 0;
-        try{
+        try {
             Statement statement = connection.createStatement();
             String query = String.format("select exam_grade from student_exam where student_ID, exam_number values('%d', '%d')", IDNumber, ExamNumber);
             ResultSet result = statement.executeQuery(query);
-            while (result.next()){
+            while (result.next()) {
                 score = result.getInt("exam_grade");
             }
 
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("There is no exam score for this student");
         }
         return score;
     }
 
+    public static boolean addProfessor(String firstName, String lastName, String email, int professor_ID) {
+        int result = 0;
+        try {
+            Statement statement = connection.createStatement();
+            String query = String.format("insert into professor where professor_ID, first_name, last_name, email ('%d', '%s', '%s','%s')", professor_ID, firstName, lastName, email);
+            result = statement.executeUpdate(query);
+
+        } catch (SQLException e) {
+            System.out.println("Problem has occurred and the professor could not be added");
+        }
+        return result > 0;
+
+    }
 }
