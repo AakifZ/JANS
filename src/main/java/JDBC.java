@@ -277,7 +277,8 @@ public class JDBC {
      * @param firstName the first name that is corresponding to the professor
      * @param lastName the last name that is corresponding to the professor
      * @param email the email that the professor uses to contact students
-     * @return the values that make up the professor
+     * @return True if professor gets added to the system
+     *         False if professor does not get added to the system
      */
     public static boolean addProfessor(int professor_ID, String firstName, String lastName, String email) {
         int result = 0;
@@ -292,7 +293,14 @@ public class JDBC {
         return result > 0;
 
     }
-    public static boolean deleteProfessor(int professor_ID) {
+
+    /**
+     * Delete a professor in the system
+     * @param professor_ID the ID unique to the professor
+     * @return True if professor gets deleted
+     *         False if professor does not get deleted
+     */
+        public static boolean deleteProfessor(int professor_ID) {
         int result = 0;
         try {
             Statement statement = connection.createStatement();
