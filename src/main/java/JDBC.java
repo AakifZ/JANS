@@ -270,6 +270,16 @@ public class JDBC {
         }
         return avg;
     }
+
+    /**
+     * Add a professor to the system
+     * @param professor_ID the ID unique to each professor
+     * @param firstName the first name that is corresponding to the professor
+     * @param lastName the last name that is corresponding to the professor
+     * @param email the email that the professor uses to contact students
+     * @return True if professor gets added to the system
+     *         False if professor does not get added to the system
+     */
     public static boolean addProfessor(int professor_ID, String firstName, String lastName, String email) {
         int result = 0;
         try {
@@ -282,5 +292,23 @@ public class JDBC {
         }
         return result > 0;
 
+    }
+
+    /**
+     * Delete a professor in the system
+     * @param professor_ID the ID unique to the professor
+     * @return True if professor gets deleted
+     *         False if professor does not get deleted
+     */
+        public static boolean deleteProfessor(int professor_ID) {
+        int result = 0;
+        try {
+            Statement statement = connection.createStatement();
+            String query = String.format("delete from professor where professor_ID = %d", professor_ID);
+            result = statement.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println("There was a problem deleting the professor. Please try again.");
+        }
+        return result > 0;
     }
 }
