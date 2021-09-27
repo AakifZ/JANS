@@ -3,8 +3,14 @@ body {
 }
 
 .header {
-    background-color: red;
+    background-color: rgb(223, 241, 104);
     text-align: center;
+}
+
+.header h1 {
+    font-size: 40px;
+    font-weight: bolder;
+    font-family: sans-serif;
 }
 
 .headerTitleOne {
@@ -16,6 +22,7 @@ body {
 .headerTitle {
     color: rgba(232,226,236,0.83);
 }
+
 input {
     width: 100%;
     padding: 12px 20px;
@@ -62,6 +69,3 @@ input {
     text-align: left;
     width: 1300px;
 }
-
-
-
