@@ -23,7 +23,6 @@ public class JDBC {
         System.out.println("Student 1's gpa is: " + getStudentGPA(1));
         System.out.println("Student 5's gpa is: " + getStudentGPA(5));
         System.out.println(addExamScore(2, 1, 90));
-        System.out.println(addExamScore(5, 1, 80));
         System.out.println("Student 2's exam score is: " + getStudentExamScore(2, 1));
         System.out.println("Student 5's exam score is: " + getStudentExamScore(5, 1));
     }
