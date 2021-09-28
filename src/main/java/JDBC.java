@@ -37,7 +37,7 @@ public class JDBC {
         System.out.println("Adding student: " + addStudentToCourse(4, 1, 50));
         System.out.println("Adding student: " + addStudentToCourse(5, 1, 80));
         System.out.println("The class average for class 1 is: " + getClassGradeAverage(1));
-        compareGrades(5);
+        System.out.println(compareGrades(5));
 
     }
 
@@ -173,7 +173,6 @@ public class JDBC {
             }
         } catch (SQLException e) {
             System.out.println("There was a problem locating the student's GPA");
-
         }
         return gpa;
     }
@@ -200,15 +199,23 @@ public class JDBC {
         return score;
     }
 
-    public static void compareGrades(int IDNumber){
+    /**
+     *  this method compares a students grade to the class average grade and prints a message
+     * @param IDNumber the Student ID number used to get the exam score and compares to the class average
+     * @return returns a string message about the grade comparison
+     */
+    public static String compareGrades(int IDNumber){
 
         if (getStudentExamScore(5, 1) > getClassGradeAverage(1)){
-            System.out.println("Your grade is higher than the class average");
+            return "Your grade is higher than the class average";
+//            System.out.println("");
         }
         else if(getStudentExamScore(5, 1) == getClassGradeAverage(1)) {
-            System.out.println("Your grade is equal to the class average");
+            return "Your grade is equal to the class average";
+//            System.out.println("Your grade is equal to the class average");
         } else {
-                System.out.println("Your grade is lower than the class average");
+            return "Your grade is lower than the class average";
+//                System.out.println("Your grade is lower than the class average");
             }
         }
 

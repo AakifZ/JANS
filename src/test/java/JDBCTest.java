@@ -178,6 +178,73 @@ public class JDBCTest {
     }
 
 
+    @Test
+    public void testCreateExam() throws SQLException{
+        Statement statement = JDBC.connection.createStatement();
+        JDBC.createExam(1, "Exam1");
+        String query = "select exam_number from Exam where name = 'Exam1'";
+        ResultSet rs = statement.executeQuery(query);
+        int result = 0;
+        while (rs.next()){
+            result = rs.getInt("exam_number");
+        }
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testCreateExam2() throws SQLException {
+        Statement statement = JDBC.connection.createStatement();
+        JDBC.createExam(2, "Exam2");
+        String query = "select exam_number from Exam where name = 'Exam2'";
+        ResultSet rs = statement.executeQuery(query);
+        int result = 0;
+        while (rs.next()){
+            result = rs.getInt("exam_number");
+        }
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testAddSysAdmin() throws SQLException {
+        Statement statement = JDBC.connection.createStatement();
+        JDBC.addSysAdmin(1,"Ben", "Stan", "bstan@gmail.com");
+        String query = "select * from sysadmin where admin_ID = 1";
+        ResultSet rs = statement.executeQuery(query);
+        String[] result = new String[4];
+        while (rs.next()) {
+            result[0] = "" + rs.getInt(1);
+            result[1] = rs.getString(2);
+            result[2] = rs.getString(3);
+            result[3] = rs.getString(4);
+        }
+        assertEquals(new String[]{"1", "Ben", "Stan", "bstan@gmail.com"}, result);
+    }
+
+    @Test
+    public void testAddExamScore() throws SQLException {
+        Statement statement = JDBC.connection.createStatement();
+        JDBC.addExamScore(1,1,85.5);
+        String query = "select exam_grade from student_exam where student_ID = 1";
+        ResultSet rs = statement.executeQuery(query);
+        int result = 0;
+        while (rs.next()) {
+            result = rs.getInt("exam_grade");
+        }
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testGetStudentExamScore() throws SQLException {
+        Statement statement = JDBC.connection.createStatement();
+        JDBC.getStudentExamScore(1,1);
+        String query = "select exam_grade from student_exam where student_ID = 1";
+        ResultSet rs = statement.executeQuery(query);
+        double result = 0.0;
+        while (rs.next()){
+            result = rs.getInt(3);
+        }
+        assertEquals(0.0, result, 0.01);
+    }
 
 }
 
