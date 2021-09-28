@@ -13,11 +13,17 @@ import static org.junit.Assert.*;
 
 public class JDBCTest {
 
+    public JDBCTest() throws SQLException {
+    }
+
     @Before
     public void init() throws SQLException, ClassNotFoundException {
         JDBC.connector();
         JDBC.DBCreationReader();
     }
+
+
+
 
     /**
      * This tests the addStudent method. It calls the addStudent method and then searches for that student in the database
@@ -58,5 +64,34 @@ public class JDBCTest {
             result = rs.getInt("student_ID");
         }
         assertEquals(0, result);
+    }
+
+    @Test
+    public void testCreateExam() throws SQLException{
+        Statement statement = JDBC.connection.createStatement();
+        JDBC.createExam(1, "this");
+        String query = "select exam_number from student_exam where student_ID = 1";
+        ResultSet rs = statement.executeQuery(query);
+        int result = 0;
+        while (rs.next()) {
+            result = rs.getInt("this");
+
+        }
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testAddExamScore() throws SQLException {
+        Statement statement = JDBC.connection.createStatement();
+        JDBC.addExamScore(1, 1,90);
+        String query = "select exam_grade from student_exam where student_ID = 1";
+        ResultSet rs = statement.executeQuery(query);
+        String result = "";
+        while (rs.next()) {
+            result = rs.getString("student_ID");
+//            result = rs.getInt("student_ID");
+        }
+
+        assertEquals("true", result);
     }
 }

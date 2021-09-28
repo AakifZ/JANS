@@ -25,8 +25,10 @@ public class JDBC {
         System.out.println("Student 5's gpa is: " + getStudentGPA(5));
         System.out.println(addExamScore(2, 1, 90));
         System.out.println(addExamScore(5, 1, 80));
+        System.out.println(addExamScore(4, 1, 85));
         System.out.println("Student 2's exam score is: " + getStudentExamScore(2, 1));
         System.out.println("Student 5's exam score is: " + getStudentExamScore(5, 1));
+        System.out.println("Student 5's exam score is: " + getStudentExamScore(4, 1));
         System.out.println("Adding professor: " + addProfessor(1,"bob", "marley", "bobmarley@gmail.com"));
         System.out.println("Adding course: " + addCourse(1,1,"CMSC"));
         //System.out.println("Deleting course: " + deleteCourse(1));
@@ -43,7 +45,7 @@ public class JDBC {
         Class.forName("com.mysql.cj.jdbc.Driver");
         String url = "jdbc:mysql://localhost:3306";
         String user = "root";
-        String password = "Chocolate123";
+        String password = "Cricket*123!";
         connection = DriverManager.getConnection(url, user, password);
     }
 
@@ -270,6 +272,13 @@ public class JDBC {
         }
         return avg;
     }
+
+//    public static void compareGradeToClass(int student_ID, int Avg) {
+//        try {
+//            Statement statement = connection.createStatement();
+//            String query = String.format("select ")
+//        }
+//    }
 
     /**
      * Add a professor to the system
