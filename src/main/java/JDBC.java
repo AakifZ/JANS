@@ -29,6 +29,7 @@ public class JDBC {
         System.out.println("Student 5's exam score is: " + getStudentExamScore(5, 1));
         System.out.println("Adding a sys admin: " + addSysAdmin(1,"Jake", "from Statefarm", "jakegylenhaal@gmail.com"));
         System.out.println("Adding professor: " + addProfessor(1,"bob", "marley", "bobmarley@gmail.com", "1231231234", 1));
+        System.out.println("Adding professor 2: " + addProfessor(2,"Gigi", "Shmorkenorf", "gigi@gmail.com", "1231231234", 1));
         System.out.println("Adding course: " + addCourse(1,1,"CMSC", "This is a cs class"));
         //System.out.println("Deleting course: " + deleteCourse(1));
         System.out.println("Adding student: " + addStudentToCourse(2, 1, 80.2));
@@ -304,6 +305,7 @@ public class JDBC {
 
         } catch (SQLException e) {
             System.out.println("Problem has occurred and the professor could not be added");
+            e.printStackTrace();
         }
         return result > 0;
 
