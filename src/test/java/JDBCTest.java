@@ -1,5 +1,6 @@
 import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import javax.swing.plaf.nimbus.State;
@@ -13,8 +14,8 @@ import static org.junit.Assert.*;
 
 public class JDBCTest {
 
-    @Before
-    public void init() throws SQLException, ClassNotFoundException {
+    @BeforeClass
+    public static void init() throws SQLException, ClassNotFoundException {
         JDBC.connector();
         JDBC.DBCreationReader();
     }
@@ -49,6 +50,7 @@ public class JDBCTest {
     @Test
     public void testAddStudentTwo() throws SQLException {
         Statement statement = JDBC.connection.createStatement();
+
         JDBC.addStudent("Jose", "Lopez", "mexico123@gmail.com", 2.6);
         String query = "select * from student where student_ID = 2";
         ResultSet rs = statement.executeQuery(query);

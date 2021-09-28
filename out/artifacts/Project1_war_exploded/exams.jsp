@@ -3,7 +3,7 @@
 <head>
     <link href="gradeStyle.css" rel="stylesheet">
     <script src="gradingSysJS.js"></script>
-    <link rel="icon" href="images/JanLogo.png"/>
+    <link rel="icon" href="../src/main/WebElements/images/JanLogo.png"/>
 </head>
 
 <title>JANS University Assignments</title>
@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
 <div class="headerTitle">
-    <h1><img src="images/JanLogo.png" width="50" height="50"> J.A.N.S. University</h1>
+    <h1><img src="../src/main/WebElements/images/JanLogo.png" width="50" height="50"> J.A.N.S. University</h1>
 </div>
 <!hyperlink>
     <div class="w3-bar w3-black">
@@ -29,7 +29,7 @@
     <input id="inputOne" placeholder="Enter Student ID" type="text"/>
     <br>
     <br>
-    <input id="inputTwo" placeholder="Enter Exam Number" type="text"/>
+    <input id="inputTwo" placeholder="Enter Exam" type="text"/>
     <br>
     <br>
     <input id="inputThree" placeholder="Enter Exam Grade" type="text"/>

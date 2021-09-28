@@ -36,6 +36,7 @@ public class JDBC {
         System.out.println("Adding student: " + addStudentToCourse(4, 1, 50));
         System.out.println("Adding student: " + addStudentToCourse(5, 1, 80));
         System.out.println("The class average for class 1 is: " + getClassGradeAverage(1));
+        compareGrades(5);
 
     }
 
@@ -182,14 +183,14 @@ public class JDBC {
      * @param ExamNumber the exam number where the score is added
      * @return returns the student score
      */
-    public static int getStudentExamScore(int IDNumber, int ExamNumber){
-        int score = 0;
+    public static double getStudentExamScore(int IDNumber, int ExamNumber){
+        double score = 0;
         try{
             Statement statement = connection.createStatement();
             String query = String.format("select exam_grade from student_exam where student_ID = %d and exam_number = %d", IDNumber, ExamNumber);
             ResultSet result = statement.executeQuery(query);
             while (result.next()){
-                score = result.getInt("exam_grade");
+                score = result.getDouble("exam_grade");
             }
 
         } catch (SQLException e){
@@ -203,11 +204,13 @@ public class JDBC {
         if (getStudentExamScore(5, 1) > getClassGradeAverage(1)){
             System.out.println("Your grade is higher than the class average");
         }
-        else {
-            System.out.println("Your grade is lower than the class average");
+        else if(getStudentExamScore(5, 1) == getClassGradeAverage(1)) {
+            System.out.println("Your grade is equal to the class average");
+        } else {
+                System.out.println("Your grade is lower than the class average");
+            }
         }
 
-    }
 
     /**
      * Add a course to the system
