@@ -20,7 +20,7 @@
 <body>
 
 <div class="headerTitle">
-    <h1><img src="../../../../web/images/JanLogo.png" width="50" height="50"> J.A.N.S. University</h1>
+    <h1><img src="images/JanLogo.png" width="50" height="50"> J.A.N.S. University</h1>
 </div>
 
 <!hyperlink>
