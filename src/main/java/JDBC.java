@@ -198,6 +198,17 @@ public class JDBC {
         return score;
     }
 
+    public static void compareGrades(int IDNumber){
+
+        if (getStudentExamScore(5, 1) > getClassGradeAverage(1)){
+            System.out.println("Your grade is higher than the class average");
+        }
+        else {
+            System.out.println("Your grade is lower than the class average");
+        }
+
+    }
+
     /**
      * Add a course to the system
      * @param courseID the ID of the course
