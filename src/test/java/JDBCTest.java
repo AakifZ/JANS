@@ -135,6 +135,23 @@ public class JDBCTest {
         }
         assertEquals(0, result);
     }
+    @Test
+    public void testAddProfessor() throws SQLException {
+        Statement statement = JDBC.connection.createStatement();
+        JDBC.addProfessor(4, "Nathan", "Drake", "Uncharted@gmail.com","6305552222",1 );
+        String query = "select * from professor where professor_ID = 444";
+        ResultSet rs = statement.executeQuery(query);
+        String[] result = new String[5];
+        while (rs.next()) {
+            result[0] = "" + rs.getInt(1);
+            result[1] = rs.getString(2);
+            result[2] = rs.getString(3);
+            result[3] = rs.getString(4);
+            result[4] = "" + rs.getDouble(5);
+        }
+        assertEquals(new String[]{"4", "Nathan", "Drake", "Uncharted@gmail.com", ""}, result);
+    }
+
 
 }
 
