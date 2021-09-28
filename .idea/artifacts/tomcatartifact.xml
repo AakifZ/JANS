@@ -9,8 +9,10 @@
         </element>
         <element id="directory" name="classes">
           <element id="module-output" name="Project1" />
+          <element id="module-output" name="GradingSystem" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="GradingSystem/web/Web" />
     </root>
   </artifact>
 </component>
