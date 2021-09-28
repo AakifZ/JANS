@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ahmed
-  Date: 9/27/2021
-  Time: 1:21 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -21,15 +14,12 @@
 <div class="headerTitle">
     <h1><img src="../images/JanLogo.png" width="50" height="50"> J.A.N.S. University</h1>
 </div>
-<div class="w3-container">
     <div class="w3-bar w3-black">
-        <a href="index.html" class="w3-bar-item w3-button">Home</a>
-        <a href="grades.html" class="w3-bar-item w3-button">Grades</a>
-        <a href="assignments.html" class="w3-bar-item w3-button">Assignments</a>
-        <a href="classlist.html" class="w3-bar-item w3-button">ClassList</a>
+        <a href="index.jsp" class="w3-bar-item w3-button">Home</a>
+        <a href="exams.jsp" class="w3-bar-item w3-button">Exams</a>
+        <a href="courselist.jsp" class="w3-bar-item w3-button">ClassList</a>
     </div>
 
-</div>
 
 <! this is the welcome page>
 <div class="header">

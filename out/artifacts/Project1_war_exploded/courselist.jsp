@@ -10,7 +10,7 @@
 <head>
     <link href="gradeStyle.css" rel="stylesheet">
     <script src="gradingSysJS.js"></script>
-    <link rel="icon" href="images/JanLogo.png"/>
+    <link rel="icon" href="../../../../web/images/JanLogo.png"/>
 </head>
 
 <title> J.A.N.S University Class List</title>
