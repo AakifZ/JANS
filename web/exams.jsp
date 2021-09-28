@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link href="gradeStyle.css" rel="stylesheet">
+    <script src="gradingSysJS.js"></script>
     <link rel="icon" href="../src/main/WebElements/images/JanLogo.png"/>
 </head>
 
@@ -22,6 +23,39 @@
     </div>
 
 </div>
+<br>
+<br>
+<div class="textFormat">
+    <p><b>Enter Student's Exam:</b></p>
+    <br>
+    <br>
+    <input id="inputOne" placeholder="Enter Student ID" type="text"/>
+    <br>
+    <br>
+    <input id="inputTwo" placeholder="Enter Exam" type="text"/>
+    <br>
+    <br>
+    <input id="inputThree" placeholder="Enter Exam Grade" type="text"/>
+    <br>
+    <br>
+    <div>
+        <button onclick="addClass()">Enter Grade</button>
+    </div>
+</div>
+
+<br>
+<br>
+
+<div class="display">
+    <h3>Exam's Entered: </h3>
+    <div id="displayClass"></div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
 
 <div class="speech">
     <p>Your assignments are posted here. Remember... it's all about getting that bag ;)</p>
@@ -45,6 +79,10 @@
         <td>Hi</td>
     </tr>
 </table>
+</div>
+
+<div class="headerTitleOne">
+    <p>Copyrighted by the J.A.N.S University peeps.</p>
 </div>
 
 </body>
