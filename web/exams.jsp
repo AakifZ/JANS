@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
     <link href="gradeStyle.css" rel="stylesheet">
-    <link rel="icon" href="../images/JanLogo.png"/>
+    <link rel="icon" href="../src/main/WebElements/images/JanLogo.png"/>
 </head>
 
 <title>JANS University Assignments</title>
@@ -10,15 +10,15 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
 <div class="headerTitle">
-    <h1><img src="../images/JanLogo.png" width="50" height="50"> J.A.N.S. University</h1>
+    <h1><img src="../src/main/WebElements/images/JanLogo.png" width="50" height="50"> J.A.N.S. University</h1>
 </div>
 <!hyperlink>
 <div class="w3-container">
     <div class="w3-bar w3-black">
-        <a href="index.html" class="w3-bar-item w3-button">Home</a>
-        <a href="grades.html" class="w3-bar-item w3-button">Grades</a>
-        <a href="assignments.html" class="w3-bar-item w3-button">Assignments</a>
-        <a href="classlist.html" class="w3-bar-item w3-button">ClassList</a>
+        <a href="../src/main/WebElements/html/index.html" class="w3-bar-item w3-button">Home</a>
+        <a href="../src/main/WebElements/html/grades.html" class="w3-bar-item w3-button">Grades</a>
+        <a href="exams.jsp" class="w3-bar-item w3-button">Assignments</a>
+        <a href="../src/main/WebElements/html/classlist.html" class="w3-bar-item w3-button">ClassList</a>
     </div>
 
 </div>
