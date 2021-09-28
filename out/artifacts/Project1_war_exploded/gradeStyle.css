@@ -1,0 +1,71 @@
+body {
+    background-color: #8820ff;
+}
+
+.header {
+    background-color: rgb(223, 241, 104);
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 40px;
+    font-weight: bolder;
+    font-family: sans-serif;
+}
+
+.headerTitleOne {
+    color: rgba(232,226,236,0.83);
+    text-align: center;
+    font-size: 10px;
+}
+
+.headerTitle {
+    color: rgba(232,226,236,0.83);
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+}
+
+.speech {
+    background-color: rgba(28,14,55,0.83);
+    color: rgba(232,226,236,0.83);
+    font-size: 18px;
+    text-align: left;
+    padding: 50px;
+}
+
+.tabs {
+    background-color: rgba(28,14,55,0.83);
+    color: rgba(232,226,236,0.83);
+    font-size: 15px;
+    margin: auto;
+    padding: 10px;
+    text-align: left;
+
+}
+
+.textFormat {
+    background-color: rgba(28,14,55,0.83);
+    border-radius: 10px;
+    border-style: solid;
+    color: rgba(232,226,236,0.83);
+    font-size: 18px;
+    margin: auto;
+    padding: 30px;
+    text-align: left;
+    width: 1300px;
+}
+
+.display {
+    background-color: rgba(28,14,55,0.83);
+    border-radius: 10px;
+    border-style: solid;
+    color: rgba(232,226,236,0.83);
+    font-size: 18px;
+    margin: auto;
+    padding: 30px;
+    text-align: left;
+    width: 1300px;
+}

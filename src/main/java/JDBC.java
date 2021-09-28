@@ -27,8 +27,9 @@ public class JDBC {
         System.out.println(addExamScore(5, 1, 80));
         System.out.println("Student 2's exam score is: " + getStudentExamScore(2, 1));
         System.out.println("Student 5's exam score is: " + getStudentExamScore(5, 1));
-        System.out.println("Adding professor: " + addProfessor(1,"bob", "marley", "bobmarley@gmail.com"));
-        System.out.println("Adding course: " + addCourse(1,1,"CMSC"));
+        System.out.println("Adding a sys admin: " + addSysAdmin(1,"Jake", "from Statefarm", "jakegylenhaal@gmail.com"));
+        System.out.println("Adding professor: " + addProfessor(1,"bob", "marley", "bobmarley@gmail.com", "1231231234", 1));
+        System.out.println("Adding course: " + addCourse(1,1,"CMSC", "This is a cs class"));
         //System.out.println("Deleting course: " + deleteCourse(1));
         System.out.println("Adding student: " + addStudentToCourse(2, 1, 80.2));
         System.out.println("Adding student: " + addStudentToCourse(3, 1, 90));
@@ -107,7 +108,7 @@ public class JDBC {
 
         try{
             Statement statement = connection.createStatement();
-            String query = String.format("insert into exam(name, description) values ('%s', '%s');", name, desc);
+            String query = String.format("insert into exam(name, feedback) values ('%s', '%s');", name, desc);
             result = statement.executeUpdate(query);
         } catch (Exception e) {
             System.out.println("Exam could not be created.");
@@ -280,11 +281,11 @@ public class JDBC {
      * @return True if professor gets added to the system
      *         False if professor does not get added to the system
      */
-    public static boolean addProfessor(int professor_ID, String firstName, String lastName, String email) {
+    public static boolean addProfessor(int professor_ID, String firstName, String lastName, String email, String phone, int sysAdmin) {
         int result = 0;
         try {
             Statement statement = connection.createStatement();
-            String query = String.format("insert into professor values('%d', '%s', '%s','%s')", professor_ID, firstName, lastName, email);
+            String query = String.format("insert into professor values('%d', '%s', '%s','%s','%s','%d')", professor_ID, firstName, lastName, email, phone, sysAdmin);
             result = statement.executeUpdate(query);
 
         } catch (SQLException e) {
@@ -308,6 +309,18 @@ public class JDBC {
             result = statement.executeUpdate(query);
         } catch (SQLException e) {
             System.out.println("There was a problem deleting the professor. Please try again.");
+        }
+        return result > 0;
+    }
+
+    public static boolean addSysAdmin(int ID, String firstName, String lastName, String email) {
+        int result = 0;
+        try {
+            Statement statement = connection.createStatement();
+            String query = String.format("insert into sysadmin values('%d','%s','%s','%s');", ID, firstName, lastName, email);
+            result = statement.executeUpdate(query);
+        }catch (Exception e) {
+            System.out.println("There was a problem adding the systems administrator.");
         }
         return result > 0;
     }
