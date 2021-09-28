@@ -1,17 +1,14 @@
-function addClass(inputString) {
-const valueOne =  document.getElementById("inputOne").value;
-const valueTwo =  document.getElementById("inputTwo").value;
-const valueThree =  document.getElementById("inputThree").value;
+function addClass() {
+let valueOne =  document.getElementById("inputOne").value;
+let valueTwo =  document.getElementById("inputTwo").value;
+let valueThree =  document.getElementById("inputThree").value;
 
-const overall = valueOne + " | " + valueTwo + " | " + valueThree;
+//displays class
+let overall = valueOne + " | " + valueTwo + " | " + valueThree;
 
-
-
-if(inputString == null) {
-    document.getElementById("displayClass").innerText = "Make sure all fields are entered.";
-} else {
     document.getElementById("displayClass").innerText = overall;
-}
+
+    //outputs an error if not every box is filled.
 
 
 console.log(valueOne + valueTwo + valueThree);

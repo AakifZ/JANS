@@ -26,15 +26,14 @@
 <!hyperlink>
 <div class="tabs">
 
-    <a href="index.html" class="w3-bar-item w3-button">Home</a>
-    <a href="grades.html" class="w3-bar-item w3-button">Grades</a>
-    <a href="../../../../web/exams.jsp" class="w3-bar-item w3-button">Assignments</a>
-    <a href="classlist.html" class="w3-bar-item w3-button">ClassList</a>
+    <a href="index.jsp" class="w3-bar-item w3-button">Home</a>
+    <a href="exams.jsp" class="w3-bar-item w3-button">Assignments</a>
+    <a href="courselist.jsp" class="w3-bar-item w3-button">Courses</a>
 </div>
 
 
 <div class="headerTitle">
-    <h2><b>Class List</b></h2>
+    <h2><b>Course List</b></h2>
 </div>
 
 <br>
@@ -44,7 +43,7 @@
     <p><b>Add course:</b></p>
     <br>
     <br>
-    <input id="inputOne" placeholder="Enter Class Name" type="text"/>
+    <input id="inputOne" placeholder="Enter Course Name" type="text"/>
     <br>
     <br>
     <input id="inputTwo" placeholder="Enter Date" type="text"/>
@@ -56,14 +55,13 @@
     <div>
         <button onclick="addClass()">Create Class</button>
     </div>
-
 </div>
 
 <br>
 <br>
 
 <div class="display">
-    <h3>Added classes: </h3>
+    <h3>Added Courses: </h3>
     <div id="displayClass"></div>
 </div>
 
