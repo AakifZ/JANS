@@ -64,6 +64,27 @@ public class JDBCTest {
     }
 
     /**
+     * This tests the addClass method.
+     * @throws SQLException
+     */
+    @Test
+    public void testAddClass() throws SQLException {
+        Statement statement = JDBC.connection.createStatement();
+        JDBC.addCourse(123, 111,"Softeware Engineering", "This is a required course");
+        String query = "select * from student where student_ID = 2";
+        ResultSet rs = statement.executeQuery(query);
+        String[] result = new String[5];
+        while (rs.next()) {
+            result[0] = "" + rs.getInt(1);
+            result[1] = rs.getString(2);
+            result[2] = rs.getString(3);
+            result[3] = rs.getString(4);
+            result[4] = "" + rs.getDouble(5);
+        }
+        assertEquals(new String[]{"123", "111", "Software Engineering", "This is a required"}, result);
+    }
+
+    /**
      * This tests the deleteStudent method. When the student has been deleted, his/her ID number would be 0. Upon deletion of
      * the first student, it checks whether the ID is still the original (1) or changed to 0 (implying deletion).
      * @throws SQLException
@@ -94,6 +115,23 @@ public class JDBCTest {
         int result = 0;
         while (rs.next()) {
             result = rs.getInt("student_ID");
+        }
+        assertEquals(0, result);
+    }
+
+    /**
+     * This deletes the class to continue to run constantly
+     * @throws SQLException
+     */
+    @Test
+    public void testDeleteClass() throws SQLException {
+        Statement statement = JDBC.connection.createStatement();
+        JDBC.deleteCourse(111);
+        String query = "select * from student where student_ID = 111";
+        ResultSet rs = statement.executeQuery(query);
+        int result = 0;
+        while (rs.next()) {
+            result = rs.getInt("course_ID");
         }
         assertEquals(0, result);
     }
