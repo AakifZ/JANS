@@ -99,6 +99,24 @@ public class JDBCTest {
     }
 
     /**
+     * Tests the DeleteProfessor Method
+     * @throws SQLException
+     */
+    @Test
+    public void testDeleteProfessor() throws SQLException{
+        Statement statement = JDBC.connection.createStatement();
+        JDBC.deleteProfessor(1);
+        String query = "select * from professor where professor_ID = 1";
+        ResultSet rs = statement.executeQuery(query);
+        int result = 0;
+        while (rs.next()) {
+            result = rs.getInt("professor_ID");
+        }
+        assertEquals(0, result);
+
+    }
+
+    /**
      * This tests the addClass method.
      *
      * @throws SQLException
