@@ -1,0 +1,26 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: ahmed
+  Date: 10/2/2021
+  Time: 11:46 AM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Systems Administrator Login</title>
+    <link href = sysAdminLoginPage.css rel="stylesheet">
+</head>
+<body>
+<form action="adminLogin" method="post">
+    <label for="user">Email/ID</label><br>
+    <input type = "type" name = "user"><br>
+    <label for="pass">Password</label><br>
+    <input type = "password" name = "pass"><br>
+    <input type="submit" value="Login">
+    <h2>${Error}</h2>
+</form>
+</body>
+</html>

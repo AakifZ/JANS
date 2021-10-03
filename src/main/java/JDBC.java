@@ -1,9 +1,12 @@
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 import java.io.*;
-import java.math.BigDecimal;
 import java.sql.*;
 
 public class JDBC {
+
     static Connection connection = null;
+
 
     public static void main(String[] args) throws ClassNotFoundException {
 
@@ -27,10 +30,10 @@ public class JDBC {
         System.out.println(addExamScore(5, 1, 80));
         System.out.println("Student 2's exam score is: " + getStudentExamScore(2, 1));
         System.out.println("Student 5's exam score is: " + getStudentExamScore(5, 1));
-        System.out.println("Adding a sys admin: " + addSysAdmin(1,"Jake", "from Statefarm", "jakegylenhaal@gmail.com"));
-        System.out.println("Adding professor: " + addProfessor(1,"bob", "marley", "bobmarley@gmail.com", "1231231234", 1));
-        System.out.println("Adding professor 2: " + addProfessor(2,"Gigi", "Shmorkenorf", "gigi@gmail.com", "1231231234", 1));
-        System.out.println("Adding course: " + addCourse(1,1,"CMSC", "This is a cs class"));
+        System.out.println("Adding a sys admin: " + addSysAdmin(1, "Jake", "from Statefarm", "jakegylenhaal@gmail.com"));
+        System.out.println("Adding professor: " + addProfessor(1, "bob", "marley", "bobmarley@gmail.com", "1231231234", 1));
+        System.out.println("Adding professor 2: " + addProfessor(2, "Gigi", "Shmorkenorf", "gigi@gmail.com", "1231231234", 1));
+        System.out.println("Adding course: " + addCourse(1, 1, "CMSC", "This is a cs class"));
         //System.out.println("Deleting course: " + deleteCourse(1));
         System.out.println("Adding student: " + addStudentToCourse(2, 1, 80.2));
         System.out.println("Adding student: " + addStudentToCourse(3, 1, 90));
@@ -43,11 +46,16 @@ public class JDBC {
 
     public static void connector() throws ClassNotFoundException, SQLException {
         // establish connection
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        String url = "jdbc:mysql://localhost:3306";
-        String user = "root";
-        String password = "Chocolate123";
-        connection = DriverManager.getConnection(url, user, password);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306";
+            String user = "root";
+            String password = "Chocolate123";
+            connection = DriverManager.getConnection(url, user, password);
+        } catch (Exception e) {
+            System.out.println("There was an error.");
+        }
+
     }
 
     public static void DBCreationReader() {
@@ -56,7 +64,7 @@ public class JDBC {
             String strCurrentLine;
             StringBuilder fileString = new StringBuilder();
 
-            BufferedReader sqlReader = new BufferedReader(new FileReader("src\\main\\sql\\gsdatabase.sql"));
+            BufferedReader sqlReader = new BufferedReader(new FileReader("src\\main\\sql\\gsdatabaseupdated.sql"));
 
             while ((strCurrentLine = sqlReader.readLine()) != null) {
                 if (strCurrentLine.length() < 1 || strCurrentLine.startsWith("--")) {
@@ -69,7 +77,6 @@ public class JDBC {
             for (String q : queries) {
                 statement.executeUpdate(q);
             }
-            sqlReader.close();
 
         } catch (SQLException a) {
             System.out.println("Issue with reading through the queries.");
@@ -103,12 +110,12 @@ public class JDBC {
         return result > 0;
     }
 
-    public static boolean createExam(int exam_number, String ... nameDesc) {
+    public static boolean createExam(int exam_number, String... nameDesc) {
         int result = 0;
-        String name = nameDesc.length > 0 ? nameDesc[0]: null;
-        String desc = nameDesc.length > 1 ? nameDesc[1]: null;
+        String name = nameDesc.length > 0 ? nameDesc[0] : null;
+        String desc = nameDesc.length > 1 ? nameDesc[1] : null;
 
-        try{
+        try {
             Statement statement = connection.createStatement();
             String query = String.format("insert into exam(name, feedback) values ('%s', '%s');", name, desc);
             result = statement.executeUpdate(query);
@@ -118,21 +125,22 @@ public class JDBC {
         }
         return result > 0;
     }
+
     /**
      * Adds the exam score for the corresponding Student
      *
-     * @param IDNumber the Student's ID number
+     * @param IDNumber   the Student's ID number
      * @param ExamNumber The Exam number where the score needs to be added
-     * @param ExamScore the Exam score that is added
+     * @param ExamScore  the Exam score that is added
      * @return returns true if score is added, false if score is not added
      */
-    public static boolean addExamScore(int IDNumber, int ExamNumber, double ExamScore){
+    public static boolean addExamScore(int IDNumber, int ExamNumber, double ExamScore) {
         int result = 0;
         try {
             Statement statement = connection.createStatement();
             String query = String.format("insert into student_exam(student_ID, exam_number, exam_grade) values (%d, %d,%f);", IDNumber, ExamNumber, ExamScore);
             result = statement.executeUpdate(query);
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("There was a problem adding exam score");
         }
         return result > 0;
@@ -140,6 +148,7 @@ public class JDBC {
 
     /**
      * Deletes a student given the student's ID Number
+     *
      * @param IDNumber student's ID number
      * @return true if the student was successfully deleted from the database
      * false if the student could not be deleted from the database
@@ -158,6 +167,7 @@ public class JDBC {
 
     /**
      * Get a student's current semester GPA by passing in the student's ID number
+     *
      * @param IDNumber the student's ID number
      * @return the student's current semester GPA
      */
@@ -179,57 +189,59 @@ public class JDBC {
 
     /**
      * gets the exam score for the corresponding student
-     * @param IDNumber the student ID number used to add the score
+     *
+     * @param IDNumber   the student ID number used to add the score
      * @param ExamNumber the exam number where the score is added
      * @return returns the student score
      */
-    public static double getStudentExamScore(int IDNumber, int ExamNumber){
+    public static double getStudentExamScore(int IDNumber, int ExamNumber) {
         double score = 0;
-        try{
+        try {
             Statement statement = connection.createStatement();
             String query = String.format("select exam_grade from student_exam where student_ID = %d and exam_number = %d", IDNumber, ExamNumber);
             ResultSet result = statement.executeQuery(query);
-            while (result.next()){
+            while (result.next()) {
                 score = result.getDouble("exam_grade");
             }
 
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("There is no exam score for this student");
         }
         return score;
     }
 
     /**
-     *  this method compares a students grade to the class average grade and prints a message
+     * this method compares a students grade to the class average grade and prints a message
+     *
      * @param IDNumber the Student ID number used to get the exam score and compares to the class average
      * @return returns a string message about the grade comparison
      */
-    public static String compareGrades(int IDNumber){
+    public static String compareGrades(int IDNumber) {
 
-        if (getStudentExamScore(5, 1) > getClassGradeAverage(1)){
+        if (getStudentExamScore(5, 1) > getClassGradeAverage(1)) {
             return "Your grade is higher than the class average";
 //            System.out.println("");
-        }
-        else if(getStudentExamScore(5, 1) == getClassGradeAverage(1)) {
+        } else if (getStudentExamScore(5, 1) == getClassGradeAverage(1)) {
             return "Your grade is equal to the class average";
 //            System.out.println("Your grade is equal to the class average");
         } else {
             return "Your grade is lower than the class average";
 //                System.out.println("Your grade is lower than the class average");
-            }
         }
+    }
 
 
     /**
      * Add a course to the system
-     * @param courseID the ID of the course
+     *
+     * @param courseID    the ID of the course
      * @param professorID the ID of the professor teaching the class
-     * @param courseName the name of the course
-     * @param desc the description of the course
+     * @param courseName  the name of the course
+     * @param desc        the description of the course
      * @return true if the course was created and added to database
      * false if course could not be created and added
      */
-    public static boolean addCourse(int courseID, int professorID, String courseName, String ... desc) {
+    public static boolean addCourse(int courseID, int professorID, String courseName, String... desc) {
         int result = 0;
         String description = desc.length > 0 ? desc[0] : null;
         try {
@@ -258,6 +270,7 @@ public class JDBC {
 
     /**
      * Delete the course with the associated course ID number
+     *
      * @param courseID the course to be deleted
      * @return true if the course was deleted
      * false if the course could not be deleted
@@ -276,6 +289,7 @@ public class JDBC {
 
     /**
      * Get the average percentage of all the students in the class
+     *
      * @param courseID the class that the average is calculated from
      * @return the class grade average
      */
@@ -285,7 +299,7 @@ public class JDBC {
             Statement statement = connection.createStatement();
             String query = String.format("select avg(course_grade) from course_enrollment where course_ID = %d;", courseID);
             ResultSet result = statement.executeQuery(query);
-            while(result.next()) {
+            while (result.next()) {
                 avg = result.getDouble("avg(course_grade)");
             }
         } catch (Exception e) {
@@ -296,12 +310,13 @@ public class JDBC {
 
     /**
      * Add a professor to the system
+     *
      * @param professor_ID the ID unique to each professor
-     * @param firstName the first name that is corresponding to the professor
-     * @param lastName the last name that is corresponding to the professor
-     * @param email the email that the professor uses to contact students
+     * @param firstName    the first name that is corresponding to the professor
+     * @param lastName     the last name that is corresponding to the professor
+     * @param email        the email that the professor uses to contact students
      * @return True if professor gets added to the system
-     *         False if professor does not get added to the system
+     * False if professor does not get added to the system
      */
     public static boolean addProfessor(int professor_ID, String firstName, String lastName, String email, String phone, int sysAdmin) {
         int result = 0;
@@ -320,11 +335,12 @@ public class JDBC {
 
     /**
      * Delete a professor in the system
+     *
      * @param professor_ID the ID unique to the professor
      * @return True if professor gets deleted
-     *         False if professor does not get deleted
+     * False if professor does not get deleted
      */
-        public static boolean deleteProfessor(int professor_ID) {
+    public static boolean deleteProfessor(int professor_ID) {
         int result = 0;
         try {
             Statement statement = connection.createStatement();
@@ -342,9 +358,10 @@ public class JDBC {
             Statement statement = connection.createStatement();
             String query = String.format("insert into sysadmin values('%d','%s','%s','%s');", ID, firstName, lastName, email);
             result = statement.executeUpdate(query);
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("There was a problem adding the systems administrator.");
         }
         return result > 0;
     }
 }
+

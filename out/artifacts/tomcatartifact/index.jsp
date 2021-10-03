@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link type=text/css href="gradeStyle.css" rel="stylesheet">
+    <link type=text/css href="CssFiles/gradeStyle.css" rel="stylesheet">
     <link rel="icon" href="images/JanLogo.png"/>
 </head>
 

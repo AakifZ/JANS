@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
-    <link href="gradeStyle.css" rel="stylesheet">
+    <link href="CssFiles/gradeStyle.css" rel="stylesheet">
     <script src="gradingSysJS.js"></script>
     <link rel="icon" href="images/JanLogo.png"/>
 </head>

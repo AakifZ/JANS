@@ -1,0 +1,10 @@
+body {
+    display: block;
+}
+form {
+    text-align: center;
+}
+
+form input[type="submit"] {
+    margin-top: 10px;
+}
