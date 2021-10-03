@@ -10,7 +10,7 @@ public class AdminDAO {
     public boolean checkLogin(int ID, String password) throws SQLException {
         ResultSet rs = null;
         try {
-        String query = "select * from sysadminlogins where ID = ? and password = ?";
+        String query = "select * from sysadmin where admin_ID = ? and password = ?";
         PreparedStatement ps = JDBC2.connection.prepareStatement(query);
         ps.setInt(1,ID);
         ps.setString(2,password);
@@ -25,7 +25,7 @@ public class AdminDAO {
     public boolean checkLogin(String email, String password) throws SQLException {
         ResultSet rs = null;
         try {
-            String query = "select * from sysadminlogins where email = ? and password = ?";
+            String query = "select * from sysadmin where email = ? and password = ?";
             PreparedStatement ps = JDBC2.connection.prepareStatement(query);
             ps.setString(1,email);
             ps.setString(2,password);

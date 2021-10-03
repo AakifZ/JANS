@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `gradingsystem`.`sysadmin` (
                                                           `first_name` VARCHAR(45) NOT NULL,
     `last_name` VARCHAR(45) NOT NULL,
     `email` VARCHAR(45) NOT NULL,
+    `password` VARCHAR(45) NOT NULL,
     PRIMARY KEY (`admin_ID`))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8mb4
@@ -42,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `gradingsystem`.`professor` (
     `email` VARCHAR(45) NOT NULL,
     `phone` VARCHAR(10) NULL,
     `sysAdmin` INT NULL,
+    `password` VARCHAR(45) NULL,
     PRIMARY KEY (`professor_ID`),
     INDEX `sysAdmin_idx` (`sysAdmin` ASC) VISIBLE,
     CONSTRAINT `profSysAdmin`
@@ -93,6 +95,7 @@ CREATE TABLE IF NOT EXISTS `gradingsystem`.`student` (
     `email` VARCHAR(45) NOT NULL,
     `gpa` DOUBLE NULL,
     `sysAdmin` INT NULL,
+    `password` VARCHAR(45) NULL,
     PRIMARY KEY (`student_ID`),
     INDEX `sysAdmin_idx` (`sysAdmin` ASC) VISIBLE,
     CONSTRAINT `studentSysAdmin`
@@ -161,58 +164,6 @@ CREATE TABLE IF NOT EXISTS `gradingsystem`.`student_exam` (
     REFERENCES `gradingsystem`.`Exam` (`exam_number`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-    ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `gradingsystem`.`sysAdminLogins`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `gradingsystem`.`sysAdminLogins` ;
-
-CREATE TABLE IF NOT EXISTS `gradingsystem`.`sysAdminLogins` (
-                                                                `ID` INT NOT NULL,
-                                                                `email` VARCHAR(45) NULL,
-    `password` VARCHAR(45) NOT NULL,
-    PRIMARY KEY (`ID`),
-    UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
-    CONSTRAINT `sysAdminID`
-    FOREIGN KEY (`ID`)
-    REFERENCES `gradingsystem`.`sysadmin` (`admin_ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-    ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `gradingsystem`.`studentLogins`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `gradingsystem`.`studentLogins` ;
-
-CREATE TABLE IF NOT EXISTS `gradingsystem`.`studentLogins` (
-                                                               `ID` INT NOT NULL,
-                                                               `email` VARCHAR(45) NULL,
-    `password` VARCHAR(45) NOT NULL,
-    PRIMARY KEY (`ID`),
-    UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
-    CONSTRAINT `studentIDLogin`
-    FOREIGN KEY (`ID`)
-    REFERENCES `gradingsystem`.`student` (`student_ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-    ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `gradingsystem`.`professorLogins`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `gradingsystem`.`professorLogins` ;
-
-CREATE TABLE IF NOT EXISTS `gradingsystem`.`professorLogins` (
-                                                                 `ID` INT NOT NULL,
-                                                                 `email` VARCHAR(45) NULL,
-    `password` VARCHAR(45) NOT NULL,
-    PRIMARY KEY (`ID`),
-    UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
     ENGINE = InnoDB;
 
 

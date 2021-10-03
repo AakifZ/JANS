@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/")
+@WebServlet("/profLogin")
 public class ProfessorServlet extends HttpServlet {
     professorDAO profDAO;
 
