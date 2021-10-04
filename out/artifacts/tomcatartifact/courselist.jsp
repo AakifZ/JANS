@@ -25,7 +25,7 @@
 
 <!hyperlink>
     <div class="w3-bar w3-black">
-        <a href="index.jsp" class="w3-bar-item w3-button">Home</a>
+        <a href="welcomePage.jsp" class="w3-bar-item w3-button">Home</a>
         <a href="exams.jsp" class="w3-bar-item w3-button">Exams</a>
         <a href="courselist.jsp" class="w3-bar-item w3-button">ClassList</a>
     </div>
