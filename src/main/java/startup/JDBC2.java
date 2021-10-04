@@ -36,7 +36,7 @@ public class JDBC2 {
             String strCurrentLine;
             StringBuilder fileString = new StringBuilder();
 
-            BufferedReader sqlReader = new BufferedReader(new FileReader("/Users/jonathancampos/IdeaProjects/Project1/src/main/sql/gsdatabaseupdated.sql"));
+            BufferedReader sqlReader = new BufferedReader(new FileReader("C:\\Users\\ahmed\\IdeaProjects\\Project1\\src\\main\\sql\\gsdatabaseupdated.sql"));
             while ((strCurrentLine = sqlReader.readLine()) != null) {
                 if (strCurrentLine.length() < 1 || strCurrentLine.startsWith("--")) {
                     continue;

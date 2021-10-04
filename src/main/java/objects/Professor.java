@@ -7,14 +7,33 @@ public class Professor {
     String email;
     String phone;
     int admin;
+    String password;
 
-    public Professor(int professor_ID, String first_name, String last_name, String email, String phone, int admin) {
+    public Professor(String first_name, String last_name, String email, String phone, int admin, String password) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.phone = phone;
+        this.admin = admin;
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Professor(int professor_ID, String first_name, String last_name, String email, String phone, int admin, String password) {
         this.professor_ID = professor_ID;
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
         this.phone = phone;
         this.admin = admin;
+        this.password = password;
     }
 
     public int getProfessor_ID() {

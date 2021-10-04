@@ -9,11 +9,11 @@ import java.util.List;
 
 public class professorDAO {
     Connection con = JDBC2.connection;
-    final static String INSERT_PROFESSOR = "insert into professor values(?, ?, ?, ?, ?, ?);";
+    final static String INSERT_PROFESSOR = "insert into professor values(?, ?, ?, ?, ?, ?, ?);";
     final static String SELECT_PROFESSOR_BY_ID = "select * from professor where professor_ID = ?;";
     final static String SELECT_ALL_PROFESSORS = "select * from professor";
     final static String UPDATE_PROFESSOR = "update professor set first_name = ?, last_name = ?, email = ?, phone_number=?, sysAdmin =? where professor_ID = ?;";
-    final static String DELETE_PROFESSOR = "delete from professor where id = ?;";
+    final static String DELETE_PROFESSOR = "delete from professor where professor_ID = ?;";
 
     public professorDAO() throws SQLException, ClassNotFoundException {
     }
@@ -56,6 +56,7 @@ public class professorDAO {
             ps.setString(4, prof.getEmail());
             ps.setString(5,prof.getPhone());
             ps.setInt(6,prof.getAdmin());
+            ps.setString(7,prof.getPassword());
             ps.executeUpdate();
         }catch (Exception e) {
             e.printStackTrace();
@@ -74,7 +75,8 @@ public class professorDAO {
                 String email = rs.getString("email");
                 String phone = rs.getString("phone");
                 int admin = rs.getInt("sysAdmin");
-                prof = new Professor(ID, first_name, last_name, email, phone, admin);
+                String password = rs.getString("password");
+                prof = new Professor(ID, first_name, last_name, email, phone, admin, password);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -95,7 +97,8 @@ public class professorDAO {
                 String email = rs.getString("email");
                 String phone = rs.getString("phone");
                 int admin = rs.getInt("sysAdmin");
-                Professor prof = new Professor(ID, first_name, last_name, email, phone, admin);
+                String password = rs.getString("password");
+                Professor prof = new Professor(ID, first_name, last_name, email, phone, admin, password);
                 profList.add(prof);
             }
         } catch (Exception e) {
