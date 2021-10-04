@@ -1,0 +1,30 @@
+body {
+    text-align: center;
+    background-color: #8820ff;
+    color: aliceblue;
+}
+
+#user, #pass, #submit{
+    margin-bottom:6px;
+}
+
+#user:focus, #pass:focus {
+    border: 2px solid rgb(128, 0, 28);
+}
+
+#submit {
+    margin: 10px;
+    border: 1px solid white;
+    border-radius: 2px;
+    background-color:rgba(28,14,55,0.83);
+    color: white;
+}
+
+#submit:hover {
+    background-color:rgba(109, 82, 161, 0.83);
+    cursor: pointer;
+}
+
+#submit:focus {
+    cursor:wait;
+}

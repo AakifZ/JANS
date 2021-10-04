@@ -3,4 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+<<<<<<< HEAD
+=======
+
+
+    <servlet>
+        <servlet-name>DB CREATION</servlet-name>
+        <servlet-class>startup.initServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+>>>>>>> 618ddf78718d95c4d48e5a16c96361f828d38838
 </web-app>
