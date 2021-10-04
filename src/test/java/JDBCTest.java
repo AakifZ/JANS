@@ -1,5 +1,7 @@
+import startup.JDBC;
 import org.junit.Before;
 import org.junit.Test;
+import startup.JDBC2;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,7 +25,7 @@ public class JDBCTest {
      */
     @Test
     public void testAddStudent() throws SQLException {
-        Statement statement = JDBC.connection.createStatement();
+        Statement statement = JDBC2.connection.createStatement();
         JDBC.addStudent("Marty", "McAnt", "mcmarty@gmail.com", 1.4);
         String query = "select * from student where student_ID = 1";
         ResultSet rs = statement.executeQuery(query);
@@ -45,7 +47,7 @@ public class JDBCTest {
      */
     @Test
     public void testAddStudentTwo() throws SQLException {
-        Statement statement = JDBC.connection.createStatement();
+        Statement statement = JDBC2.connection.createStatement();
         JDBC.addStudent("temp", "student", "tempstudent@gmail.com", 0.4);
         JDBC.addStudent("Jose", "Lopez", "mexico123@gmail.com", 2.6);
 
@@ -64,7 +66,7 @@ public class JDBCTest {
 
     @Test
     public void testAddSysAdmin() throws SQLException {
-        Statement statement = JDBC.connection.createStatement();
+        Statement statement = JDBC2.connection.createStatement();
         JDBC.addSysAdmin(1, "Abdul", "Jerry", "abduljerry@gmail.com");
         String query = "select * from sysadmin where admin_ID = 1";
         ResultSet rs = statement.executeQuery(query);
@@ -80,7 +82,7 @@ public class JDBCTest {
 
     @Test
     public void testAddProfessor() throws SQLException {
-        Statement statement = JDBC.connection.createStatement();
+        Statement statement = JDBC2.connection.createStatement();
         JDBC.addSysAdmin(1,"temp","admin","tempadmin@gmail.com");
         JDBC.addProfessor(1, "Nathan", "Drake", "Uncharted@gmail.com", "6305552222", 1);
 
@@ -104,7 +106,7 @@ public class JDBCTest {
      */
     @Test
     public void testDeleteProfessor() throws SQLException{
-        Statement statement = JDBC.connection.createStatement();
+        Statement statement = JDBC2.connection.createStatement();
         JDBC.deleteProfessor(1);
         String query = "select * from professor where professor_ID = 1";
         ResultSet rs = statement.executeQuery(query);
@@ -123,7 +125,7 @@ public class JDBCTest {
      */
     @Test
     public void testAddClass() throws SQLException {
-        Statement statement = JDBC.connection.createStatement();
+        Statement statement = JDBC2.connection.createStatement();
         JDBC.addSysAdmin(1, "temp", "admin", "tempadmin@gmail.com");
         JDBC.addProfessor(1, "temp", "professor", "tempprof@gmail.com", "1231231234", 1);
         JDBC.addCourse(1, 1, "Software Engineering", "This is a required course");
@@ -148,7 +150,7 @@ public class JDBCTest {
      */
     @Test
     public void testDeleteStudent() throws SQLException {
-        Statement statement = JDBC.connection.createStatement();
+        Statement statement = JDBC2.connection.createStatement();
         JDBC.deleteStudent(1);
         String query = "select * from student where student_ID = 1";
         ResultSet rs = statement.executeQuery(query);
@@ -166,7 +168,7 @@ public class JDBCTest {
      */
     @Test
     public void testDeleteStudentTwo() throws SQLException {
-        Statement statement = JDBC.connection.createStatement();
+        Statement statement = JDBC2.connection.createStatement();
         JDBC.deleteStudent(2);
         String query = "select * from student where student_ID = 2";
         ResultSet rs = statement.executeQuery(query);
@@ -184,7 +186,7 @@ public class JDBCTest {
      */
     @Test
     public void testDeleteClass() throws SQLException {
-        Statement statement = JDBC.connection.createStatement();
+        Statement statement = JDBC2.connection.createStatement();
         JDBC.deleteCourse(111);
         String query = "select * from student where student_ID = 111";
         ResultSet rs = statement.executeQuery(query);
@@ -198,7 +200,7 @@ public class JDBCTest {
 
     @Test
     public void testCreateExam() throws SQLException{
-        Statement statement = JDBC.connection.createStatement();
+        Statement statement = JDBC2.connection.createStatement();
         JDBC.createExam(1, "Exam1");
         String query = "select exam_number from Exam where name = 'Exam1'";
         ResultSet rs = statement.executeQuery(query);
@@ -211,7 +213,7 @@ public class JDBCTest {
 
     @Test
     public void testCreateExam2() throws SQLException {
-        Statement statement = JDBC.connection.createStatement();
+        Statement statement = JDBC2.connection.createStatement();
         JDBC.createExam(2, "Exam2");
         String query = "select exam_number from Exam where name = 'Exam2'";
         ResultSet rs = statement.executeQuery(query);
@@ -224,8 +226,8 @@ public class JDBCTest {
 
 //    @Test
 //    public void testAddSysAdmin() throws SQLException {
-//        Statement statement = JDBC.connection.createStatement();
-//        JDBC.addSysAdmin(1,"Ben", "Stan", "bstan@gmail.com");
+//        Statement statement = Startup.JDBC.connection.createStatement();
+//        Startup.JDBC.addSysAdmin(1,"Ben", "Stan", "bstan@gmail.com");
 //        String query = "select * from sysadmin where admin_ID = 1";
 //        ResultSet rs = statement.executeQuery(query);
 //        String[] result = new String[4];
@@ -240,7 +242,7 @@ public class JDBCTest {
 
     @Test
     public void testAddExamScore() throws SQLException {
-        Statement statement = JDBC.connection.createStatement();
+        Statement statement = JDBC2.connection.createStatement();
         JDBC.addStudent("John","Ziauddin","Ziauddin@gmail.com", 3.5);
         JDBC.createExam(1, "Test 1", "This is the first test");
         JDBC.addExamScore(1,1,85.5);
@@ -255,7 +257,7 @@ public class JDBCTest {
 
     @Test
     public void testGetStudentExamScore() throws SQLException {
-        Statement statement = JDBC.connection.createStatement();
+        Statement statement = JDBC2.connection.createStatement();
         JDBC.getStudentExamScore(1,1);
         String query = "select exam_grade from student_exam where student_ID = 1";
         ResultSet rs = statement.executeQuery(query);

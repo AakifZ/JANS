@@ -6,7 +6,7 @@
 
     <servlet>
         <servlet-name>DB CREATION</servlet-name>
-        <servlet-class>initServlet</servlet-class>
+        <servlet-class>startup.initServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 

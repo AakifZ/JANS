@@ -11,9 +11,16 @@
 
 <head>
     <title>Systems Administrator Login</title>
-    <link href = sysAdminLoginPage.css rel="stylesheet">
+    <link href = "sysAdminLoginPage.css" rel="stylesheet">
 </head>
 <body>
+<% HttpSession session1 = request.getSession();
+if(session1.getAttribute("user") != null ) {
+    System.out.println("you're good");
+    RequestDispatcher rd = request.getRequestDispatcher("profServ");
+    rd.forward(request, response);
+}
+%>
 <form action="adminLogin" method="post">
     <label for="user">Email/ID</label><br>
     <input type = "type" name = "user" id="user"><br>

@@ -9,11 +9,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <link href="CssFiles/prof_list.css" rel="stylesheet">
+    <title>Professor List</title>
 </head>
 <body>
-
-<table class="table table-bordered">
+<% HttpSession session1 = request.getSession();
+    if(session1.getAttribute("user") == null) {
+        response.sendRedirect("sysAdminLoginPage.jsp");
+    }
+%>
+<div class="topnav">
+    <a href="profServ">Professor</a>
+    <a href="#">Student</a>
+    <a href="#">Course</a>
+    <a id="logout" href="adminLogout">Log Out</a>
+</div>
+<table class="content-table">
     <h1>Professors:</h1>
     <thead>
     <tr>
@@ -27,7 +38,7 @@
     </thead>
     <tbody>
     <c:forEach var="Professor" items="${profList}">
-        <tr>
+        <tr onclick="window.location='courselist.jsp';">
             <td><c:out value="${Professor.professor_ID}"/></td>
             <td><c:out value="${Professor.first_name}"/></td>
             <td><c:out value="${Professor.last_name}"/></td>
