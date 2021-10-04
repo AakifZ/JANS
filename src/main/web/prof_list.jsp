@@ -1,3 +1,5 @@
+<%@ page import="objects.Professor" %>
+<%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--
   Created by IntelliJ IDEA.
@@ -13,10 +15,10 @@
     <title>Professor List</title>
 </head>
 <body>
-<% HttpSession session1 = request.getSession();
+<% /*HttpSession session1 = request.getSession();
     if(session1.getAttribute("user") == null) {
         response.sendRedirect("sysAdminLoginPage.jsp");
-    }
+    }*/
 %>
 <div class="topnav">
     <a href="profServ">Professor</a>
@@ -26,6 +28,10 @@
 </div>
 <table class="content-table">
     <h1>Professors:</h1>
+    <a href="prof_form.jsp">New Professor</a>
+    <% Object prof = request.getAttribute("profList");
+        System.out.println(prof);
+    %>
     <thead>
     <tr>
         <th>ID</th>
@@ -34,17 +40,21 @@
         <th>Email</th>
         <th>Phone</th>
         <th>Admin</th>
+        <th>Remove</th>
     </tr>
     </thead>
     <tbody>
     <c:forEach var="Professor" items="${profList}">
-        <tr onclick="window.location='courselist.jsp';">
-            <td><c:out value="${Professor.professor_ID}"/></td>
+        <!-- onclick="window.location='courselist.jsp';"-->
+        <tr>
+            <td name="ID"><c:out value="${Professor.professor_ID}"/></td>
             <td><c:out value="${Professor.first_name}"/></td>
             <td><c:out value="${Professor.last_name}"/></td>
             <td><c:out value="${Professor.email}"/></td>
             <td><c:out value="${Professor.phone}"/></td>
             <td><c:out value="${Professor.admin}"/></td>
+            <td><a href="profDelete?ID=<c:out value="${Professor.professor_ID}"/>"/>Delete</td>
+
         </tr>
     </c:forEach>
     </tbody>
