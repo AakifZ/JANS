@@ -41,7 +41,7 @@ public class ProfessorLoginServlet extends HttpServlet {
 
         try {
             if (profDAO.checkLogin(user, pass) || profDAO.checkLogin(Integer.parseInt(user), pass)) {
-                resp.sendRedirect("index.jsp");
+                resp.sendRedirect("welcomePage.jsp");
             } else {
                 throw new Exception();
             }
