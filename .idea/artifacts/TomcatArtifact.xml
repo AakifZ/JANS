@@ -5,6 +5,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="Project1" />
+          <element id="module-output" name="GradingSystem" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.26" />
@@ -14,6 +15,9 @@
       </element>
       <element id="library" level="project" name="Maven: javax.servlet:servlet-api:4.0.1" />
       <element id="javaee-facet-resources" facet="Project1/web/WebFacet" />
+      <element id="javaee-facet-resources" facet="GradingSystem/javaeeApplication/javaEEApplication" />
+      <element id="javaee-facet-resources" facet="GradingSystem/web/Web" />
+      <element id="javaee-facet-resources" facet="GradingSystem/web/Web2" />
     </root>
   </artifact>
 </component>
