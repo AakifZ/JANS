@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet("/profServ")
-public class ProfessorServlet extends HttpServlet {
+public class ProfessorManagementServlet extends HttpServlet {
     professorDAO profDAO;
 
     @Override

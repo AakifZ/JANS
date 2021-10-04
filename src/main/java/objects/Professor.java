@@ -17,10 +17,6 @@ public class Professor {
         this.admin = admin;
     }
 
-
-
-
-
     public int getProfessor_ID() {
         return professor_ID;
     }
