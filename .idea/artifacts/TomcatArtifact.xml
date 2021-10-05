@@ -14,8 +14,8 @@
         </element>
       </element>
       <element id="library" level="project" name="Maven: javax.servlet:servlet-api:4.0.1" />
-      <element id="javaee-facet-resources" facet="Project1/web/WebFacet" />
       <element id="javaee-facet-resources" facet="GradingSystem/web/Web" />
+      <element id="javaee-facet-resources" facet="Project1/web/Web" />
     </root>
   </artifact>
 </component>
