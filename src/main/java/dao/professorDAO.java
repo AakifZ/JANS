@@ -3,6 +3,7 @@ package dao;
 import objects.Professor;
 import startup.JDBC2;
 
+import javax.servlet.RequestDispatcher;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +47,7 @@ public class professorDAO {
         return rs.next() == true;
     }
 
-    public void insertProfessor(Professor prof) {
-        try {
+    public void insertProfessor(Professor prof) throws SQLIntegrityConstraintViolationException, SQLException{
             Connection connection = JDBC2.connection;
             PreparedStatement ps = connection.prepareStatement(INSERT_PROFESSOR);
             ps.setInt(1, prof.getProfessor_ID());
@@ -58,9 +58,6 @@ public class professorDAO {
             ps.setInt(6,prof.getAdmin());
             ps.setString(7,prof.getPassword());
             ps.executeUpdate();
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
     }
     public Professor selectProfessorByID(int ID) {
         Professor prof = null;
