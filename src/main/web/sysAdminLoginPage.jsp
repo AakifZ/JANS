@@ -14,12 +14,12 @@
     <link href = "sysAdminLoginPage.css" rel="stylesheet">
 </head>
 <body>
-<% HttpSession session1 = request.getSession();
+<% /*HttpSession session1 = request.getSession();
 if(session1.getAttribute("user") != null ) {
     System.out.println("you're good");
-    RequestDispatcher rd = request.getRequestDispatcher("profServ");
+    RequestDispatcher rd = request.getRequestDispatcher("profServ/list");
     rd.forward(request, response);
-}
+}*/
 %>
 <form action="adminLogin" method="post">
     <label for="user">Email/ID</label><br>
