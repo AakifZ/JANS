@@ -13,7 +13,7 @@ public class JDBC2 {
     public static Connection connection = null;
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        System.out.println("hello");
+        System.out.println("helloddf");
     }
 
     public static void connector() throws ClassNotFoundException, SQLException {
