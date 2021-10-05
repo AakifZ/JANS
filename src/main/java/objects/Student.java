@@ -9,6 +9,15 @@ public class Student {
     int sysAdmin;
     String password;
 
+    public Student(String first_name, String last_name, String email, double gpa, int sysAdmin, String password) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.gpa = gpa;
+        this.sysAdmin = sysAdmin;
+        this.password = password;
+    }
+
     public Student(int student_ID, String first_name, String last_name, String email, double gpa, int sysAdmin, String password) {
         this.student_ID = student_ID;
         this.first_name = first_name;
