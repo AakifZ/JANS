@@ -1,44 +1,58 @@
 package servlets;
 
 import dao.StudentDAO;
+import dao.professorDAO;
+import objects.Student;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Objects;
 
 @WebServlet("/studentLogin")
 public class StudentLoginServlet extends HttpServlet {
 
+    StudentDAO StudDAO = new StudentDAO();
+
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String action = req.getServletPath();
 
-        String user = req.getParameter("user").trim();
-        String pass = req.getParameter("pass").trim();
-        AdminDAO ad = new AdminDAO();
-        try {
-            if (ad.checkLogin(user, pass) || ad.checkLogin(Integer.parseInt(user), pass)) {
-                HttpSession session = req.getSession();
-                session.setAttribute("user", user);
+        switch (action) {
+            case "/studentLogin":
+                doPost(req, resp);
+                break;
+            case "/insertStudent":
 
-                RequestDispatcher rd = req.getRequestDispatcher("profServ");
-                rd.forward(req, resp);
-
-                //resp.sendRedirect("prof_list.jsp");
-            } else {
-                System.out.println("An exception was thrown.");
-                throw new Exception();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            req.setAttribute("Error", "Invalid Login! Please try again.");
-            req.getRequestDispatcher("sysAdminLoginPage.jsp").forward(req, resp);
         }
 
     }
+
+    public StudentLoginServlet() throws SQLException, ClassNotFoundException {
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int user = Integer.parseInt(req.getParameter("user").trim());
+        String pass = req.getParameter("pass").trim();
+
+        try {
+            if (StudDAO.checkLogin(user, pass)) {
+                resp.sendRedirect("index.jsp");
+            } else {
+                throw new Exception();
+            }
+        } catch (Exception e) {
+            System.out.println("There was an error");
+            e.printStackTrace();
+            req.setAttribute("Error", "Invalid Login! Try again.");
+            req.getRequestDispatcher("StudentLoginPage.jsp").forward(req, resp);
+        }
+    }
+
 }
