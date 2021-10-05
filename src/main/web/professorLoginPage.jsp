@@ -11,7 +11,7 @@
     <title>objects.Professor Login</title>
 </head>
 <body>
-<h1>objects.Professor Login</h1>
+<h1>Professor Login</h1>
 <div id="formContainer">
     <form action="professorLogin" method="post">
         <label for="user">ID/Email:</label><br>
