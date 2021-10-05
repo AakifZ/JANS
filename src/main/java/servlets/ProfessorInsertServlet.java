@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 @WebServlet("/profInsert")
 public class ProfessorInsertServlet extends HttpServlet {
@@ -34,11 +35,22 @@ public class ProfessorInsertServlet extends HttpServlet {
             Professor prof = new Professor(first_name, last_name, email, phone, admin, password);
             profDAO.insertProfessor(prof);
             resp.sendRedirect("profServ");
+        } catch (NumberFormatException num) {
+            req.setAttribute("Error", "Please enter a valid number for Admin ID");
+            RequestDispatcher rd = req.getRequestDispatcher("prof_form.jsp");
+            rd.forward(req, resp);
+        } catch (SQLIntegrityConstraintViolationException s) {
+            System.out.println("In the sqlintegrity error");
+            req.setAttribute("Error", "Please enter an existing Admin ID");
+            RequestDispatcher rd = req.getRequestDispatcher("prof_form.jsp");
+            rd.forward(req, resp);
         } catch (NullPointerException n){
+            System.out.println("in the null pointer error");
             req.setAttribute("Error", "Please fill in all the fields!");
             RequestDispatcher rd = req.getRequestDispatcher("prof_form.jsp");
             rd.forward(req, resp);
         }catch (Exception e) {
+            System.out.println("Error here: default exception e in profinsertserv");
             e.printStackTrace();
             resp.sendRedirect("/profInsert");
         }
