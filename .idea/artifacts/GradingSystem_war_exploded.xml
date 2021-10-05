@@ -1,10 +1,9 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="TomcatArtifact">
-    <output-path>$PROJECT_DIR$/out/artifacts/TomcatArtifact</output-path>
+  <artifact type="exploded-war" name="GradingSystem:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/GradingSystem_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="Project1" />
           <element id="module-output" name="GradingSystem" />
         </element>
         <element id="directory" name="lib">
@@ -13,11 +12,8 @@
           <element id="library" level="project" name="javax.servlet.jstl" />
         </element>
       </element>
-      <element id="library" level="project" name="Maven: javax.servlet:servlet-api:4.0.1" />
-      <element id="javaee-facet-resources" facet="Project1/web/WebFacet" />
-      <element id="javaee-facet-resources" facet="GradingSystem/javaeeApplication/javaEEApplication" />
-      <element id="javaee-facet-resources" facet="GradingSystem/web/Web" />
       <element id="javaee-facet-resources" facet="GradingSystem/web/Web2" />
+      <element id="javaee-facet-resources" facet="GradingSystem/javaeeApplication/javaEEApplication" />
     </root>
   </artifact>
 </component>
