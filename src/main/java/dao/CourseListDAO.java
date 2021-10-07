@@ -6,7 +6,7 @@ import startup.JDBC2;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+//User: JayC
 public class CourseListDAO {
     Connection con = JDBC2.connection;
     final static String INSERT_COURSE = "insert into course values(?, ?, ?, ?, ?, ?, ?);";

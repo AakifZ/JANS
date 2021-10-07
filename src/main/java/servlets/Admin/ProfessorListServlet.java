@@ -1,8 +1,7 @@
-package servlets;
+package servlets.Admin;
 
-
-import dao.StudentDAO;
-import objects.Student;
+import dao.professorDAO;
+import objects.Professor;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,23 +14,23 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/studServ")
-public class StudentListServlet extends HttpServlet {
-   StudentDAO studDAO;
+@WebServlet("/profServ")
+public class ProfessorListServlet extends HttpServlet {
+    professorDAO profDAO;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        if (session.getAttribute("user") == null) {
+        if(session.getAttribute("user") == null) {
             resp.sendRedirect("sysAdminLoginPage.jsp");
         } else {
             try {
-                List<Student> studList = studDAO.selectAllStudents();
-                for (int i = 0; i < studList.size(); i++) {
-                    System.out.println(studList.get(i).getFirst_name());
+                List<Professor> profList = profDAO.selectAllProfessors();
+                for(int i = 0; i < profList.size(); i++) {
+                    System.out.println(profList.get(i).getFirst_name());
                 }
-                req.setAttribute("studList", studList);
-                RequestDispatcher dispatcher = req.getRequestDispatcher("stud_list.jsp");
+                req.setAttribute("profList", profList);
+                RequestDispatcher dispatcher = req.getRequestDispatcher("prof_list.jsp");
                 dispatcher.forward(req, resp);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -40,14 +39,14 @@ public class StudentListServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
     }
 
     @Override
     public void init() throws ServletException {
         try {
-            studDAO = new StudentDAO();
+            profDAO = new professorDAO();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

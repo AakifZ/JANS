@@ -1,6 +1,6 @@
-package servlets;
+package servlets.Admin;
 
-import dao.professorDAO;
+import dao.StudentDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,27 +10,27 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/profDelete")
-public class ProfessorDeleteServlet extends HttpServlet {
-
+@WebServlet("/studDelete")
+public class StudentDeleteServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        professorDAO profDAO = null;
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        StudentDAO studDAO = null;
         try {
-            profDAO = new professorDAO();
+            studDAO = new StudentDAO();
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e){
             e.printStackTrace();
         }
         int ID = Integer.parseInt(req.getParameter("ID").trim());
         System.out.println("The id number is: " + ID);
         try {
-            profDAO.deleteProfessor(ID);
+            studDAO.deleteStudent(ID);
         } catch (Exception e) {
             e.printStackTrace();
         }
         resp.sendRedirect("profServ");
+
     }
 }
