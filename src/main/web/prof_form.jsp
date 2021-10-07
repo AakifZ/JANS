@@ -8,22 +8,50 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
+
 <head>
-    <link href="prof_html.css" rel="stylesheet">
+    <link href="CssFiles/prof_form.css" rel="stylesheet">
     <title>Hello</title>
 </head>
+
 <body>
 <div id="form-container">
     <form action="profInsert">
-        <input type="text" placeholder="first_name" name="first_name" required="required"/><br>
-        <input type="text" placeholder="last_name" name="last_name" required="required"/><br>
-        <input type="text" placeholder="email" name="email" required="required"/><br>
-        <input type = "text" placeholder="phone" name="phone" required="required"><br>
-        <input type="text" placeholder="admin" name="admin" required="required"><br>
-        <input type = "text" placeholder="password" name="password" required="required"/><br>
-        <input type = "submit" value="Submit">
+
+        <div class="form-group">
+            <label for="first_name">First Name</label><input id="first_name" type="text" name="first_name" required="required" />
+        </div>
+        <div class="form-group">
+            <label for="last_name">Last Name</label><input id="last_name" type="text" name="last_name" required="required" />
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label><input id="email" type="text" name="email" required="required" />
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone #</label><input id="phone" type="text" name="phone" required="required">
+        </div>
+
+
+        <div class="form-group">
+            <label for="admin">Admin ID</label><input id="admin" type="text" name="admin" required="required">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label><input id="password" type="password" name="password" required="required" />
+        </div>
+
+        <div class="form-group">
+            <label for="password-confirm">Confirm Password</label><input id="password-confirm" type="password" name="password-confirm"
+                                                                         required="required" />
+        </div>
+
+        <input type="submit" value="Submit">
     </form>
+
+</div>
+<div class="form-group">
     <h3>${Error}</h3>
 </div>
 </body>
+
 </html>
