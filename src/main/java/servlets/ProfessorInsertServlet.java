@@ -32,6 +32,10 @@ public class ProfessorInsertServlet extends HttpServlet {
             String phone = req.getParameter("phone").trim();
             int admin = Integer.parseInt(req.getParameter("admin").trim());
             String password = req.getParameter("password").trim();
+            String password_confirm = req.getParameter("password-confirm").trim();
+            if(!password.equals(password_confirm)) {
+                throw new Exception();
+            }
             Professor prof = new Professor(first_name, last_name, email, phone, admin, password);
             profDAO.insertProfessor(prof);
             resp.sendRedirect("profServ");
@@ -52,7 +56,9 @@ public class ProfessorInsertServlet extends HttpServlet {
         }catch (Exception e) {
             System.out.println("Error here: default exception e in profinsertserv");
             e.printStackTrace();
-            resp.sendRedirect("/profInsert");
+            req.setAttribute("Error", "The passwords do not match");
+            RequestDispatcher rd = req.getRequestDispatcher("prof_form.jsp");
+            rd.forward(req, resp);
         }
     }
 }
