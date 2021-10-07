@@ -1,4 +1,4 @@
-package servlets;
+package servlets.Professor;
 
 import dao.professorDAO;
 

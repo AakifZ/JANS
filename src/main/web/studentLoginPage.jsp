@@ -15,7 +15,7 @@
 <body>
 <h1>Student Login</h1>
 <center>
-    <form action="loginCheck.jsp" method="post">
+    <form action="studentindex.jsp" method="post">
         <br/>Username:<input type="text" name="username">
         <br/>Password:<input type="password" name="password">
         <br/><input type="submit" value="Submit">

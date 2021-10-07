@@ -13,7 +13,8 @@ public class JDBC2 {
     public static Connection connection = null;
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-
+connector();
+DBCreationReader();
     }
 
     public static void connector() throws ClassNotFoundException, SQLException {
@@ -34,7 +35,7 @@ public class JDBC2 {
             String strCurrentLine;
             StringBuilder fileString = new StringBuilder();
 
-            BufferedReader sqlReader = new BufferedReader(new FileReader("C:\\Users\\ahmed\\IdeaProjects\\Project1\\src\\main\\sql\\gsdatabaseupdated.sql"));
+            BufferedReader sqlReader = new BufferedReader(new FileReader("C:\\Users\\aakif\\IdeaProjects\\Project1\\src\\main\\sql\\gsdatabaseupdated.sql"));
             while ((strCurrentLine = sqlReader.readLine()) != null) {
                 if (strCurrentLine.length() < 1 || strCurrentLine.startsWith("--")) {
                     continue;
