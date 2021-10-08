@@ -15,6 +15,7 @@
     <title>Professor List</title>
 </head>
 <body>
+
 <% /*HttpSession session1 = request.getSession();
     if(session1.getAttribute("user") == null) {
         response.sendRedirect("sysAdminLoginPage.jsp");
@@ -32,6 +33,7 @@
     <% Object prof = request.getAttribute("profList");
         System.out.println(prof);
     %>
+    <h3>${Error}</h3>
     <thead>
     <tr>
         <th>ID</th>
@@ -54,7 +56,6 @@
             <td><c:out value="${Professor.phone}"/></td>
             <td><c:out value="${Professor.admin}"/></td>
             <td><a href="profDelete?ID=<c:out value="${Professor.professor_ID}"/>"/>Delete</td>
-
         </tr>
     </c:forEach>
     </tbody>
