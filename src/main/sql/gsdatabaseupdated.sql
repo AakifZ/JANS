@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `gradingsystem`.`course` (
                                                         `course_name` VARCHAR(45) NOT NULL,
     `course_description` VARCHAR(250) NOT NULL,
     `sysAdmin` INT NULL,
-    PRIMARY KEY (`course_ID`),
+    PRIMARY KEY (`course_ID`, `professor_ID`),
     INDEX `professor_ID_idx` (`professor_ID` ASC) VISIBLE,
     INDEX `sysAdmin_idx` (`sysAdmin` ASC) VISIBLE,
     CONSTRAINT `professor_ID`

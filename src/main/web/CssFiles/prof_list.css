@@ -61,3 +61,8 @@ body {
 .topnav a:hover {
     background-color: violet;
 }
+
+td {
+    max-width: 400px;
+    word-wrap: break-word;
+}
