@@ -2,6 +2,7 @@ package servlets.Admin;
 
 import dao.professorDAO;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,8 +30,17 @@ public class ProfessorDeleteServlet extends HttpServlet {
         try {
             profDAO.deleteProfessor(ID);
         } catch (Exception e) {
+
+            req.setAttribute("Error", "A professor cannot be deleted if they are currently teaching a class");
+            RequestDispatcher rd = req.getRequestDispatcher("profServ");
+            rd.forward(req, resp);
             e.printStackTrace();
         }
         resp.sendRedirect("profServ");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
     }
 }

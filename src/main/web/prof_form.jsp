@@ -34,7 +34,7 @@
 
 
         <div class="form-group">
-            <label for="admin">Admin ID</label><input id="admin" type="text" name="admin" required="required">
+            <label for="admin">Admin ID</label><input id="admin" type="number" name="admin" required="required">
         </div>
         <div class="form-group">
             <label for="password">Password</label><input id="password" type="password" name="password" required="required" />
@@ -46,6 +46,7 @@
         </div>
 
         <input type="submit" value="Submit">
+        <a href="profServ">Cancel</a>
     </form>
 
 </div>
