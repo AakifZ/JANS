@@ -19,7 +19,13 @@ public class StudentCourseList extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+            HttpSession session = req.getSession();
+            int user = 0;
+            if(session.getAttribute("user") != null) {
+                user = (int) session.getAttribute("user");
+            } else {
+                System.out.println("The user attribute is null");
+            }
             try {
                 List<StudentCourses> studCourseList = CDAO.selectAllCoursesforStudent(user);
                 req.setAttribute("studCourseList", studCourseList);
