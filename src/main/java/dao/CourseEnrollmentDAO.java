@@ -16,7 +16,7 @@ import startup.JDBC2;
 public class CourseEnrollmentDAO {
     Connection con = JDBC2.connection;
 
-    final static String StudentCourses_BY_ID = "Select course.course_ID,course.course_name,course.course_description,course.professor_ID from course, course_enrollment Where course.course_ID = course_enrollment.course_ID and student_ID = 1; ?;";
+    final static String StudentCourses_BY_ID = "Select course.course_ID,course.course_name,course.course_description,course.professor_ID from course, course_enrollment Where course.course_ID = course_enrollment.course_ID and student_ID = ?;";
 
     public List<StudentCourses> selectAllCoursesforStudent(int student_ID) {
         List<StudentCourses> StudentCourseList = new ArrayList<>();

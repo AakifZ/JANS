@@ -20,7 +20,7 @@ public class StudentDAO {
     public boolean checkLogin(int ID, String password) throws SQLException {
         ResultSet rs = null;
         try {
-            String query = "select * from  where student_ID = ? and password = ?;";
+            String query = "select * from student where student_ID = ? and password = ?;";
             PreparedStatement ps = JDBC2.connection.prepareStatement(query);
             ps.setInt(1,ID);
             ps.setString(2,password);
