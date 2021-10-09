@@ -1,8 +1,6 @@
 package servlets.Student;
 
 import dao.CourseEnrollmentDAO;
-import dao.CourseListDAO;
-import objects.Professor;
 import objects.StudentCourses;
 
 import javax.servlet.RequestDispatcher;
@@ -23,8 +21,8 @@ public class StudentCourseList extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
             try {
-                List<StudentCourses> studList = CDAO.selectAllCoursesforStudent(1);
-                req.setAttribute("studList", studList);
+                List<StudentCourses> studCourseList = CDAO.selectAllCoursesforStudent(user);
+                req.setAttribute("studCourseList", studCourseList);
                 RequestDispatcher dispatcher = req.getRequestDispatcher("stud_CourseList.jsp");
                 dispatcher.forward(req, resp);
             } catch (Exception e) {
