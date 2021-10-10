@@ -19,10 +19,10 @@
     <form action="adminCourseInsertServlet">
 
         <div class="form-group">
-            <label for="course_ID">Course ID</label><input id="course_ID" type="number" name="course_ID" required="required" />
+            <label for="course_ID">Course ID</label><input id="course_ID" type="number" name="course_ID" required="required"/>
         </div>
         <div class="form-group">
-            <label for="professor_ID">Professor ID</label><input id="professor_ID" type="number" name="professor_ID" required="required" />
+            <label for="professor_ID">Professor ID</label><input id="professor_ID" type="number" name="professor_ID" required="required"/>
         </div>
         <div class="form-group">
             <label for="course_name">Course Name</label><input id="course_name" type="text" name="course_name" required="required" />
