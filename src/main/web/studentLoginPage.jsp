@@ -13,7 +13,8 @@
     <title>Student Login</title>
 </head>
 <body>
-<h1>Student Login</h1>
+<h1>Student Login</h1>.
+
 <center>
     <form action="studentLogin" method="post">
         <br/>Username:<input type="text" name="user" required="required">

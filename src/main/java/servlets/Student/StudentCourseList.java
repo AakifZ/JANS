@@ -33,6 +33,8 @@ public class StudentCourseList extends HttpServlet {
                 dispatcher.forward(req, resp);
             } catch (Exception e) {
                 e.printStackTrace();
+                req.setAttribute("Error", "Invalid Login! Please try again.");
+                req.getRequestDispatcher("studentLoginPage.jsp").forward(req, resp);
             }
         }
     }
