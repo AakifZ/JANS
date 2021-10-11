@@ -57,7 +57,7 @@ public class StudentLoginServlet extends HttpServlet {
             System.out.println("There was an error");
             e.printStackTrace();
             req.setAttribute("Error", "Invalid Login! Try again.");
-            req.getRequestDispatcher("StudentLoginPage.jsp").forward(req, resp);
+            req.getRequestDispatcher("studentLoginPage.jsp").forward(req, resp);
         }
     }
 

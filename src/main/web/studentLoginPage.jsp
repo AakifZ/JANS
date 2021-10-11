@@ -8,16 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href="/CssFiles/gradeStyle.css" rel="stylesheet">
+    <link href="CssFiles/professorLoginPage.css" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Student Login</title>
 </head>
 <body>
-<h1>Student Login</h1>.
+<h1>Student Login</h1>
 
 <center>
     <form action="studentLogin" method="post">
-        <br/>Username:<input type="text" name="user" required="required">
+        <br/>Username:<input type="number" name="user" required="required">
         <br/>Password:<input type="password" name="pass" required="required">
         <br/><input type="submit" value="Submit">
         <h3>${Error}</h3>
