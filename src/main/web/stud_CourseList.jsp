@@ -37,12 +37,13 @@
     </thead>
     <tbody>
     <c:forEach var="studCourseList" items="${studCourseList}">
-        <tr>
-            <td name="ID"><c:out value="${studCourseList.courseID}"/></td>
-            <td><c:out value="${studCourseList.course_name}"/></td>
-            <td><c:out value="${studCourseList.course_description}"/></td>
-            <td><c:out value="${studCourseList.professor_ID}"/></td>
 
+        <tr onclick="window.location = 'StudExamList?course_ID=<c:out value = "${studCourseList.courseID}"/>'">
+
+                <td name="ID"><c:out value="${studCourseList.courseID}"/></td>
+                <td><c:out value="${studCourseList.course_name}"/></td>
+                <td><c:out value="${studCourseList.course_description}"/></td>
+                <td><c:out value="${studCourseList.professor_ID}"/></td>
         </tr>
     </c:forEach>
     </tbody>
