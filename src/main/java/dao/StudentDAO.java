@@ -1,7 +1,7 @@
 package dao;
 
 import startup.JDBC2;
-
+import objects.Student;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -97,7 +97,7 @@ public class StudentDAO {
             ps.setString(2,Stud.getLast_name());
             ps.setString(3,Stud.getEmail());
             ps.setDouble(4,Stud.getGpa());
-            ps.setInt(5,Stud.getSysAdmin());
+            ps.setInt(5,Stud.getAdmin());
             ps.setString(6, Stud.getPassword());
             updated = ps.executeUpdate() > 0;
         } catch (Exception e) {
