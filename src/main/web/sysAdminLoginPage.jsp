@@ -21,13 +21,21 @@ if(session1.getAttribute("user") != null ) {
     rd.forward(request, response);
 }*/
 %>
-<form action="adminLogin" method="post">
-    <label for="user">Email/ID</label><br>
-    <input type = "type" name = "user" id="user"><br>
-    <label for="pass">Password</label><br>
-    <input type = "password" name = "pass" id="pass"><br>
-    <input type="submit" value="Login">
-    <h2>${Error}</h2>
-</form>
+<h1>System Admin Login</h1>
+<div class="border">
+    <form action="adminLogin" method="post">
+        <div class="form-group">
+            <label for="user">Email/ID</label><br>
+            <input type = "type" name = "user" id="user"><br>
+        </div>
+        <div class="form-group">
+            <label for="pass">Password</label><br>
+            <input type = "password" name = "pass" id="pass"><br>
+        </div>
+        <input type="submit" value="Login">
+
+    </form>
+</div>
+<h2>${Error}</h2>
 </body>
 </html>

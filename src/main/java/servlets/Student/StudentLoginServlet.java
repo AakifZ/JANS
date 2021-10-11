@@ -50,6 +50,7 @@ public class StudentLoginServlet extends HttpServlet {
                  session.setAttribute("user",user);
                 resp.sendRedirect("studentindex.jsp");
             } else {
+                System.out.println("Exception Message");
                 throw new Exception();
             }
         } catch (Exception e) {

@@ -15,6 +15,10 @@ public class AdminCourse {
         this.sysAdmin = sysAdmin;
     }
 
+    public AdminCourse() {
+
+    }
+
     public int getCourse_ID() {
         return course_ID;
     }
