@@ -2,6 +2,7 @@ package servlets.Admin;
 
 import dao.StudentDAO;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,9 +29,17 @@ public class StudentDeleteServlet extends HttpServlet {
         try {
             studDAO.deleteStudent(ID);
         } catch (Exception e) {
+            req.setAttribute("Error", "A student cannot be deleted if they are already in a class");
+            RequestDispatcher rd = req.getRequestDispatcher("studServ");
+            rd.forward(req, resp);
             e.printStackTrace();
         }
         resp.sendRedirect("profServ");
 
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
     }
 }

@@ -11,7 +11,7 @@
 <html>
 <head>
 
-    <title>Exam List>
+    <title>Exam List</title>
 </head>
 <body>
 <% HttpSession session1 = request.getSession();
@@ -52,4 +52,3 @@
 
 </body>
 </html>
-
