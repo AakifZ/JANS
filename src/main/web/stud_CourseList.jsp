@@ -19,6 +19,7 @@
 
 <div class="topnav">
     <a href="StudCourseList">Student</a>
+    <a id="logout" href="studLogout">Log Out</a>
 </div>
 <table class="content-table">
     <h1>Courses</h1>
