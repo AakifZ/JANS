@@ -15,6 +15,7 @@ import java.util.List;
 
 @WebServlet ("/StudCourseList")
 public class StudentCourseList extends HttpServlet {
+
     CourseEnrollmentDAO CDAO = new CourseEnrollmentDAO();
 
     @Override

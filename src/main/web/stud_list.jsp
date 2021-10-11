@@ -17,14 +17,18 @@
 <body>
 
 <div class="topnav">
-    <a href="profServ">Student</a>
+    <a href="studServ">Student</a>
     <a href="#">Student</a>
-    <a href="#">Course</a>
+    <a href="adminCourseListServlet">Course</a>
     <a id="logout" href="adminLogout">Log Out</a>
 </div>
 <table class="content-table">
     <h1>Students:</h1>
     <a href="stud_form.jsp">New Student</a>
+    <% Object stud = request.getAttribute("studList");
+        System.out.println(stud);
+    %>
+    <h3>${Error}</h3>
     <thead>
     <tr>
         <th>ID</th>
@@ -37,16 +41,15 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="Professor" items="${studList}">
+    <c:forEach var="Student" items="${studList}">
         <tr>
-            <td name="ID"><c:out value="${Students.student_ID}"/></td>
+            <td name="ID"><c:out value="${Student.student_ID}"/></td>
             <td><c:out value="${Student.first_name}"/></td>
             <td><c:out value="${Student.last_name}"/></td>
             <td><c:out value="${Student.email}"/></td>
             <td><c:out value="${Student.gpa}"/></td>
-            <td><c:out value="${Student.sysAdmin}"/></td>
-            <td><a href="profDelete?ID=<c:out value="${Professor.professor_ID}"/>"/>Delete</td>
-
+            <td><c:out value="${Student.admin}"/></td>
+            <td><a href="studDelete?ID=<c:out value="${Student.student_ID}"/>"/>Delete</td>
         </tr>
     </c:forEach>
     </tbody>

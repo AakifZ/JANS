@@ -1,6 +1,7 @@
 package servlets.Admin;
 
 import dao.StudentDAO;
+import helper.passwordHelper;
 import objects.Student;
 
 import javax.servlet.RequestDispatcher;
@@ -18,6 +19,7 @@ public class StudentInsertServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         StudentDAO studDAO = null;
+        boolean validPass = true;
         try {
             studDAO = new StudentDAO();
         } catch (SQLException e) {
@@ -30,26 +32,37 @@ public class StudentInsertServlet extends HttpServlet {
             String last_name = req.getParameter("last_name").trim();
             String email = req.getParameter("email").trim();
             Double gpa = Double.parseDouble(req.getParameter("gpa").trim());
-            int sysAdmin = Integer.parseInt(req.getParameter("admin").trim());
+            int admin = Integer.parseInt(req.getParameter("admin").trim());
             String password = req.getParameter("password").trim();
-            Student stud = new Student(first_name, last_name, email, gpa, sysAdmin, password);
+            String password_confirm = req.getParameter("password-confirm").trim();
+            if(!password.equals(password_confirm)){
+                throw new Exception();
+            }
+            if(!passwordHelper.validPassword(password)){
+                validPass = false;
+                throw new Exception();
+            }
+            Student stud = new Student(first_name, last_name, email, gpa, admin, password);
             studDAO.insertStudent(stud);
             resp.sendRedirect("studServ");
-        } catch (NumberFormatException num) {
-            req.setAttribute("Error", "Please enter a valid number for Admin ID");
+        } catch (SQLIntegrityConstraintViolationException s) {
+            System.out.println("In the sqlintegrity error");
+            req.setAttribute("Error", "Please enter an existing Admin ID");
             RequestDispatcher rd = req.getRequestDispatcher("stud_form.jsp");
             rd.forward(req, resp);
-        }
-        catch (NullPointerException n){
-            System.out.println("in the null pointer error");
-            req.setAttribute("Error", "Please fill in all the fields!");
-            RequestDispatcher rd = req.getRequestDispatcher("stud_form.jsp");
-            rd.forward(req, resp);
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Error here: default exception e in studinsertserv");
             e.printStackTrace();
-            resp.sendRedirect("/studInsert");
+            System.out.println("the pass is valid: " + validPass);
+            if(!validPass) {
+                req.setAttribute("Error", "The password should have at least one uppercase, one lowercase, one digit, and be 8 characters long");
+                RequestDispatcher rd = req.getRequestDispatcher("stud_form.jsp");
+                rd.forward(req, resp);
+            } else {
+                req.setAttribute("Error", "The passwords do not match");
+                RequestDispatcher rd = req.getRequestDispatcher("stud_form.jsp");
+                rd.forward(req, resp);
+            }
         }
-
     }
 }

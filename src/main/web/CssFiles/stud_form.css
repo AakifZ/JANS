@@ -1,0 +1,95 @@
+body {
+    font-family: Verdana;
+    margin: 0px;
+    background-color: whitesmoke;
+    display: flex;
+    background:linear-gradient(to bottom, rgb(254, 244, 255), rgb(224, 224, 255)) ;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+#form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    box-shadow: 40px 20px rgb(204, 141, 241);
+    min-width: 400px;
+    min-height: 300px;
+    height: 50%;
+    width: 50%;
+    max-width: 450px;
+    border-radius: 5%;
+
+    background-color: white;
+    color:rgb(119, 39, 165);
+}
+label {
+    width: 150px;
+    text-align: right;
+    margin-right: 13px;
+}
+
+#form-container h1 {
+    margin: 0px;
+}
+.form-group {
+
+    margin: 10px 30px;
+    display: flex;
+
+
+}
+
+.form-group:nth-of-type(1) {
+    margin-top: 20px;
+}
+
+#form-container input:focus {
+    outline: 2px solid rgb(119, 39, 165);
+
+}
+
+#form-container input[type="submit"] {
+    background-color: rgb(175, 79, 230);
+    margin: 10px;
+    padding: 8px;
+    width: 30%;
+    color: white;
+    border-radius: 100px;
+    font-weight: bolder;
+    font-size: 18px;
+
+}
+
+#form-container input[type="submit"]:hover {
+    background-color: rgb(204, 141, 241);
+    cursor: pointer;
+
+}
+
+#form-container a {
+    border: 1px solid black;
+    text-decoration: none;
+    background-color: rgb(175, 79, 230);
+    margin: 10px;
+    padding: 8px;
+    width: 50%;
+    color: white;
+    border-radius: 100px;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+#form-container a:hover {
+    background-color: rgb(204, 141, 241);
+}
+
+#form-container textarea {
+    max-width: 200px;
+    max-height: 100px;
+}

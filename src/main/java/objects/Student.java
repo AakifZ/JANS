@@ -6,7 +6,7 @@ public class Student {
     String last_name;
     String email;
     double gpa;
-    int sysAdmin;
+    int admin;
     String password;
 
     public Student(String first_name, String last_name, String email, double gpa, int sysAdmin, String password) {
@@ -14,7 +14,15 @@ public class Student {
         this.last_name = last_name;
         this.email = email;
         this.gpa = gpa;
-        this.sysAdmin = sysAdmin;
+        this.admin = admin;
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -24,9 +32,11 @@ public class Student {
         this.last_name = last_name;
         this.email = email;
         this.gpa = gpa;
-        this.sysAdmin = sysAdmin;
+        this.admin = admin;
         this.password = password;
     }
+
+
 
     public int getStudent_ID() {
         return student_ID;
@@ -69,18 +79,12 @@ public class Student {
     }
 
     public int getSysAdmin() {
-        return sysAdmin;
+        return admin;
     }
 
     public void setSysAdmin(int sysAdmin) {
-        this.sysAdmin = sysAdmin;
+        this.admin = sysAdmin;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
