@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <head>
     <link href="CssFiles/professorLoginPage.css" rel="stylesheet">
-    <title>objects.Professor Login</title>
+    <title>Professor Login</title>
 </head>
 <body>
 <h1>Professor Login</h1>

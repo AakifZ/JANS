@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            <label for="gpa">GPA</label><input type="text" placeholder="gpa" name="gpa"/><br>
+            <label for="gpa">GPA</label><input id="gpa" type="text" name="gpa" required="required"/>
         </div>
 
         <div class="form-group">
