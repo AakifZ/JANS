@@ -1,16 +1,12 @@
 package dao;
 
 
-import objects.Student;
 import objects.StudentCourses;
-import objects.Professor;
 import startup.JDBC2;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import startup.JDBC2;
 
 
 public class ExamDAO {

@@ -1,6 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="objects.Student" %>
 <%@ page import="java.util.List" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: nafri
@@ -17,8 +18,8 @@
 <body>
 
 <div class="topnav">
+    <a href="profServ">Professor</a>
     <a href="studServ">Student</a>
-    <a href="#">Student</a>
     <a href="adminCourseListServlet">Course</a>
     <a id="logout" href="adminLogout">Log Out</a>
 </div>
@@ -48,7 +49,7 @@
             <td><c:out value="${Student.last_name}"/></td>
             <td><c:out value="${Student.email}"/></td>
             <td><c:out value="${Student.gpa}"/></td>
-            <td><c:out value="${Student.admin}"/></td>
+           <td><c:out value="${Student.admin}"/></td>
             <td><a href="studDelete?ID=<c:out value="${Student.student_ID}"/>"/>Delete</td>
         </tr>
     </c:forEach>

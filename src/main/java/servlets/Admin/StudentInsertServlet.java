@@ -43,6 +43,7 @@ public class StudentInsertServlet extends HttpServlet {
                 throw new Exception();
             }
             Student stud = new Student(first_name, last_name, email, gpa, admin, password);
+//            System.out.println("student is :" + stud);
             studDAO.insertStudent(stud);
             resp.sendRedirect("studServ");
         } catch (SQLIntegrityConstraintViolationException s) {
