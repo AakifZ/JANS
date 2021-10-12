@@ -37,6 +37,7 @@
     </thead>
     <c:forEach var="examGrade" items="${examGrade}">
         <tr>
+        <tr onclick="window.location = 'examList=<c:out value = "${examList}"/>'">
             <td name="ID"><c:out value="${examGrade.exam_number}"/></td>
             <td><c:out value="${examGrade.student_ID}"/></td>
             <td><c:out value="${examGrade.first_Name}"/></td>

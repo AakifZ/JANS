@@ -12,7 +12,7 @@ import java.util.List;
 public class examgradeStuDAOJC {
     Connection connect = JDBC2.connection;
 
-    final static String exams_BY_ID = "Select student.first_name, student.last_name, student_exam.student_ID, student_exam.exam_number, student_exam.exam_grade from student, student_exam Where student.student_ID = student_exam.student_ID and student_exam.exam_grade = ?;";
+    final static String exams_BY_ID = "Select student.first_name, student.last_name, student_exam.student_ID, student_exam.exam_number, student_exam.exam_grade from student, student_exam where student.student_ID = ?;";
 
     public List<examgradeStuJC> selectcoursesforexams(int student_ID) {
         List<examgradeStuJC> examList = new ArrayList<>();

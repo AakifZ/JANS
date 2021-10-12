@@ -20,6 +20,12 @@
     <a href="profCourseList">Courses</a>
     <a id="logout" href="adminLogout">Log Out</a>
 </div>
+
+<table class="content-table">
+    <h1>Course List </h1>
+    <% Object proCourse = request.getAttribute("profCourseList");
+        System.out.println(proCourse);
+    %>
     <thead>
     <tr>
         <th>course ID</th>

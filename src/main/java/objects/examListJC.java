@@ -1,31 +1,30 @@
 package objects;
 
 public class examListJC {
-int exam_ID;
-String exam_Name;
-
+int exam_number;
+String exam_name;
 String feedback;
 
-    public examListJC(int exam_ID, String exam_Name, String feedback) {
-        this.exam_ID = exam_ID;
-        this.exam_Name = exam_Name;
+    public examListJC(int exam_number, String exam_name, String feedback) {
+        this.exam_number = exam_number;
+        this.exam_name = exam_name;
         this.feedback = feedback;
     }
 
-    public int getExam_ID() {
-        return exam_ID;
+    public int getExam_number() {
+        return exam_number;
     }
 
-    public void setExam_ID(int exam_ID) {
-        this.exam_ID = exam_ID;
+    public void setExam_number(int exam_number) {
+        this.exam_number = exam_number;
     }
 
-    public String getExam_Name() {
-        return exam_Name;
+    public String getExam_name() {
+        return exam_name;
     }
 
-    public void setExam_Name(String exam_Name) {
-        this.exam_Name = exam_Name;
+    public void setExam_name(String exam_name) {
+        this.exam_name = exam_name;
     }
 
     public String getFeedback() {
