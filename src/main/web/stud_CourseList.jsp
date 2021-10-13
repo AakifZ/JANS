@@ -19,7 +19,7 @@
 
 <div class="topnav">
     <a id="Home" href="studentindex.jsp">Home</a>
-    <a href="StudCourseList">Student</a>
+    <a href="StudCourseList">Courses</a>
     <a id="logout" href="studLogout">Log Out</a>
 </div>
 <table class="content-table">
