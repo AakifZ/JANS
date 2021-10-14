@@ -1,11 +1,20 @@
 package objects;
 
-public class examListJC {
-int exam_number;
-String exam_name;
-String feedback;
+public class exam {
+public static int exam_number;
+public static String exam_name;
+public static String feedback;
 
-    public examListJC(int exam_number, String exam_name, String feedback) {
+    @Override
+    public String toString() {
+        return "exam{" +
+                "exam_number=" + exam_number +
+                ", exam_name='" + exam_name + '\'' +
+                ", feedback='" + feedback + '\'' +
+                '}';
+    }
+
+    public exam(int exam_number, String exam_name, String feedback) {
         this.exam_number = exam_number;
         this.exam_name = exam_name;
         this.feedback = feedback;

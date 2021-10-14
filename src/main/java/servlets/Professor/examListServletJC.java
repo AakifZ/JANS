@@ -1,9 +1,7 @@
 package servlets.Professor;
 
 import dao.examListDAOJC;
-import dao.profCourseDAOJC;
-import objects.examListJC;
-import objects.profCoursesJC;
+import objects.exam;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,7 +29,7 @@ public class examListServletJC extends HttpServlet {
         }
         try {
             System.out.println("The logged in prof's id is: " + user);
-            List<examListJC> examList = pDAO.selectcoursesforexams(user);
+            List<exam> examList = pDAO.selectcoursesforexams(user);
             for(int i = 0; i < examList.size(); i++) {
                 System.out.println(examList.get(i));
             }

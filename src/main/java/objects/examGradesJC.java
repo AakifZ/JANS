@@ -1,18 +1,26 @@
 package objects;
 
-public class examgradeStuJC {
+public class examGradesJC {
+    int student_ID;
     String first_Name;
     String last_Name;
-    int student_ID;
     int exam_number;
     double exam_grade;
 
-    public examgradeStuJC(String first_Name, String last_Name, int student_ID, int exam_number, double exam_grade) {
+    public examGradesJC(int student_ID, String first_Name, String last_Name, int exam_number, double exam_grade) {
+        this.student_ID = student_ID;
         this.first_Name = first_Name;
         this.last_Name = last_Name;
-        this.student_ID = student_ID;
         this.exam_number = exam_number;
         this.exam_grade = exam_grade;
+    }
+
+    public int getStudent_ID() {
+        return student_ID;
+    }
+
+    public void setStudent_ID(int student_ID) {
+        this.student_ID = student_ID;
     }
 
     public String getFirst_Name() {
@@ -29,14 +37,6 @@ public class examgradeStuJC {
 
     public void setLast_Name(String last_Name) {
         this.last_Name = last_Name;
-    }
-
-    public int getStudent_ID() {
-        return student_ID;
-    }
-
-    public void setStudent_ID(int student_ID) {
-        this.student_ID = student_ID;
     }
 
     public int getExam_number() {

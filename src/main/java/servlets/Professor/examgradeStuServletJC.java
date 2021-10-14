@@ -1,9 +1,8 @@
 package servlets.Professor;
 
 import dao.examgradeStuDAOJC;
-import dao.profCourseDAOJC;
-import objects.examgradeStuJC;
-import objects.profCoursesJC;
+import objects.examGradesJC;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,40 +10,29 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
 @WebServlet("/examGradeList")
 public class examgradeStuServletJC extends HttpServlet {
-    examgradeStuDAOJC pDAO = new examgradeStuDAOJC();
-
+    examgradeStuDAOJC grades = new examgradeStuDAOJC();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        int user = 0;
-        if(session.getAttribute("user") != null) {
-            user = (int) session.getAttribute("user");
 
-        } else {
-            System.out.println("The user attribute is null");
-        }
-        try {
-            System.out.println("The logged in prof's id is: " + user);
-            List<examgradeStuJC> exList = pDAO.selectcoursesforexams(user);
-            for(int i = 0; i < exList.size(); i++) {
-                System.out.println(exList.get(i));
-            }
-            req.setAttribute("examList", exList);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("proExamGradeJC.jsp");
-            dispatcher.forward(req, resp);
-        } catch (Exception e) {
-            e.printStackTrace();
-            req.setAttribute("Error", "Invalid Login! Please try again.");
-            req.getRequestDispatcher("professorLoginPage.jsp").forward(req, resp);
-        }
     }
 
-
-
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println(req.getParameter("student_ID"));
+        int student_ID = Integer.parseInt(req.getParameter("student_ID")) ;
+        String first_name = req.getParameter("first_Name");
+        String last_name = req.getParameter("last_Name");
+        int examNum = Integer.parseInt(req.getParameter("exam_grade")) ;
+        int examGrade = Integer.parseInt(req.getParameter("exam_grade")) ;
+        List<examGradesJC> StudentgList = grades.selectGradesforexams(student_ID);
+        System.out.println(StudentgList);
+        req.setAttribute("gradeList", StudentgList);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("profExamGradeJC.jsp");
+        dispatcher.forward(req, resp);
+    }
 }
