@@ -27,9 +27,9 @@ public class StudentListServlet extends HttpServlet {
         } else {
             try {
                 List<Student> studList = studDAO.selectAllStudents();
-                for (int i = 0; i < studList.size(); i++) {
-                    System.out.println(studList.get(i).getFirst_name());
-                }
+//                for (int i = 0; i < studList.size(); i++) {
+//                    System.out.println(studList.get(i).getFirst_name());
+//                }
                 req.setAttribute("studList", studList);
                 RequestDispatcher dispatcher = req.getRequestDispatcher("stud_list.jsp");
                 dispatcher.forward(req, resp);

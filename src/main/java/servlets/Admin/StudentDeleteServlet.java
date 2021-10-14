@@ -34,7 +34,7 @@ public class StudentDeleteServlet extends HttpServlet {
             rd.forward(req, resp);
             e.printStackTrace();
         }
-        resp.sendRedirect("profServ");
+        resp.sendRedirect("studServ");
 
     }
 

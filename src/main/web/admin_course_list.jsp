@@ -21,7 +21,7 @@
 %>
 <div class="topnav">
   <a href="profServ">Professor</a>
-  <a href="#">Student</a>
+  <a href="studServ">Student</a>
   <a href="adminCourseListServlet">Course</a>
   <a id="logout" href="adminLogout">Log Out</a>
 </div>
