@@ -22,6 +22,7 @@
 <div class="w3-bar w3-black">
     <a href="#" class="w3-bar-item w3-button">Home</a>
     <a href="StudCourseList" class="w3-bar-item w3-button">Classes</a>
+    <a id="logout" class="w3-bar-item w3-button" href="studLogout">Log Out</a>
 </div>
 
 
