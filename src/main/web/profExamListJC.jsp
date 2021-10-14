@@ -35,6 +35,7 @@
 
     <th>Exam Number</th>
     <th>Exam Name</th>
+    <th>Exam Grade</th>
     <th>Feedback</th>
 
 <c:forEach items="${StuExamList}" var="exam">
@@ -43,6 +44,7 @@
         <form action="${pageContext.request.contextPath}/examGradeList" method="post">
         <td><input type="text" name="exam_number" value="${exam.exam_number}"/></td>
     <td><input type="text" name="exam_name" value="${exam.exam_name}"/></td>
+            <td><input type="text" name="exam_grade" value ="${exam.exam_grade}"/></td>
     <td><input type="text" name="feedback" value ="${exam.feedback}"/></td>
         <td><button type="submit">Edit Grade</button></td>
         </form>

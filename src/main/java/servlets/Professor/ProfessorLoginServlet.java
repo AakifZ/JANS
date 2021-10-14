@@ -37,11 +37,11 @@ public class ProfessorLoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String user = req.getParameter("user").trim();
+        int user = Integer.parseInt(req.getParameter("user").trim());
         String pass = req.getParameter("pass").trim();
 
         try {
-            if (profDAO.checkLogin(user, pass) || profDAO.checkLogin(Integer.parseInt(user), pass)) {
+            if (profDAO.checkLogin(user, pass) || profDAO.checkLogin(user, pass)) {
                 HttpSession session = req.getSession();
                 session.setAttribute("user",user);
                 resp.sendRedirect("profHomePageJC.jsp");
