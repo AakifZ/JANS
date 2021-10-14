@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
-
+import dao.ExamDAO;
 @WebServlet("/examList")
 public class examListServletJC extends HttpServlet {
     examListDAOJC pDAO = new examListDAOJC();
@@ -41,5 +41,21 @@ public class examListServletJC extends HttpServlet {
 //            req.setAttribute("Error", "Invalid Login! Please try again.");
 //            req.getRequestDispatcher("professorLoginPage.jsp").forward(req, resp);
 //        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        int professor_ID = Integer.parseInt(String.valueOf(session.getAttribute("user")));
+
+        System.out.println(req.getParameter("course_ID"));
+        int course_ID = Integer.parseInt(req.getParameter("course_ID")) ;
+
+        ExamDAO dao = new ExamDAO();
+        List<exam> examList = dao.selectExamsByCourseIdAndProfId(course_ID, professor_ID);
+        System.out.println(examList);
+        req.setAttribute("StuExamList", examList);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("profExamListJC.jsp");
+        dispatcher.forward(req, resp);
     }
 }
