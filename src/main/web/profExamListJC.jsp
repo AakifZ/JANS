@@ -35,6 +35,7 @@
 
     <th>Exam Number</th>
     <th>Exam Name</th>
+    <th>Exam Grade</th>
     <th>Feedback</th>
 
 <c:forEach items="${StuExamList}" var="exam">

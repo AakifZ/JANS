@@ -3,6 +3,7 @@ package dao;
 import objects.exam;
 import startup.JDBC2;
 
+import javax.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +29,7 @@ public class examListDAOJC {
 
         try {
             Connection connection = JDBC2.connection;
-            PreparedStatement ps = connection.prepareStatement(exams_BY_ID);
+            PreparedStatement ps = connection.prepareStatement(Exam_BY_ID);
             ps.setInt(1, professor_ID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
