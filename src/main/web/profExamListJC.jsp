@@ -5,7 +5,7 @@
   Time: 4:53 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="objects.examListJC" %>
+<%@ page import="objects.exam" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -22,27 +22,33 @@
 </div>
 
 <table class="content-table">
-    <h1>Exam List</h1>
-    <% Object examListJC = request.getAttribute("examL");
-        System.out.println(examListJC);
-    %>
-    <thead>
+
+
+<%--<% Object proExam = request.getAttribute("StuExamList");--%>
+<%--    System.out.println("TEST" + proExam);--%>
+<%--%>--%>
+<%--<c:out value="${proExam}"/>--%>
+
+<%--<c:set var="examList" value="${StuExamList}"/>--%>
+<%--<p>${examList}</p>--%>
+<%--<p>${StuExamList}</p>--%>
+
+    <th>Exam Number</th>
+    <th>Exam Name</th>
+    <th>Feedback</th>
+
+<c:forEach items="${StuExamList}" var="exam">
+
     <tr>
-        <th>Exam ID</th>
-        <th>Exam Name</th>
-        <th>Feedback</th>
+        <form action="${pageContext.request.contextPath}/examGradeList" method="post">
+        <td><input type="text" name="exam_number" value="${exam.exam_number}"/></td>
+    <td><input type="text" name="exam_name" value="${exam.exam_name}"/></td>
+    <td><input type="text" name="feedback" value ="${exam.feedback}"/></td>
+        <td><button type="submit">Edit Grade</button></td>
+        </form>
     </tr>
-    </thead>
-    <c:forEach var="courL" items="${examL}">
-        <tr>
-            <td name="ID"><c:out value="${examL.exam_ID}"/></td>
-            <td><c:out value="${examL.exam_Name}"/></td>
-            <td><c:out value="${examL.feedback}"/></td>
-
-
-        </tr>
-    </c:forEach>
+</c:forEach>
 </table>
-
 </body>
 </html>
+

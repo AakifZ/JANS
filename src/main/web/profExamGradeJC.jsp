@@ -5,7 +5,7 @@
   Time: 4:54 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="objects.examgradeStuJC" %>
+<%@ page import="objects.examGradesJC" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -22,7 +22,7 @@
 </div>
 
 <table class="content-table">
-    <h1>Exam List</h1>
+    <h1>Exam Grade</h1>
     <% Object examgradeStuJC = request.getAttribute("examGrade");
         System.out.println(examgradeStuJC);
     %>
@@ -37,14 +37,23 @@
     </thead>
     <c:forEach var="examGrade" items="${examGrade}">
         <tr>
-            <td name="ID"><c:out value="${examGrade.exam_number}"/></td>
-            <td><c:out value="${examGrade.student_ID}"/></td>
-            <td><c:out value="${examGrade.first_Name}"/></td>
-            <td><c:out value="${examGrade.last_Name}"/></td>
-            <td><c:out value="${examGrade.exam_Grade}"/></td>
+
+        <tr onclick="window.location = 'examList=<c:out value = "${examList}"/>'">
+            <form action="${pageContext.request.contextPath}/examInsert" method="post">
+
+<%--                //<td name="ID"><c:out value="${examGrade.exam_number}"/></td>--%>
+            <td ><input type="text" name="student_ID" value="${examGrade.student_ID}"/></td>
+            <td><input type="text" name="first_Name"  value="${examGrade.first_Name}"/></td>
+            <td><input type="text" name="last_Name" value="${examGrade.last_Name}"/></td>
+            <td><input type="text" name="exam_Grade" value="${examGrade.exam_Grade}"/></td>
+
+            </form>
         </tr>
+
     </c:forEach>
 </table>
 
+<h3>Edit Student Grades:</h3>
+<a href="examGradeFormJC.jsp">Edit</a>
 </body>
 </html>
