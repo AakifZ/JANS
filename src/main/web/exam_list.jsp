@@ -23,7 +23,7 @@
     <a href="studServ">Professor</a>
     <a href="#">Student</a>
     <a href="#">Course</a>
-    <a id="logout" href="adminLogout">Log Out</a>
+    <a id="logout" href="professorLoginPage.jsp">Log Out</a>
 </div>
 <table class="content-table">
     <h1>Students:</h1>

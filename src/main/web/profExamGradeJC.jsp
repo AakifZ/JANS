@@ -17,9 +17,10 @@
 
 <div class="topnav">
     <a href="profHomePageJC.jsp">Home</a>
-    <a href="profCourseListJC.jsp">Courses</a>
-    <a id="logout" href="adminLogout">Log Out</a>
+    <a href="profCourseList">Courses</a>
+    <a id="logout" href="professorLoginPage.jsp">Log Out</a>
 </div>
+
 
 <table class="content-table">
     <h1>Exam Grade</h1>

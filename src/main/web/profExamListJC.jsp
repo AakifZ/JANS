@@ -17,8 +17,8 @@
 
 <div class="topnav">
     <a href="profHomePageJC.jsp">Home</a>
-    <a href="profCourseListJC.jsp">Courses</a>
-    <a id="logout" href="adminLogout">Log Out</a>
+    <a href="profCourseList">Courses</a>
+    <a id="logout" href="professorLoginPage.jsp">Log Out</a>
 </div>
 
 <table class="content-table">
@@ -46,7 +46,6 @@
     <td><input type="text" name="exam_name" value="${exam.exam_name}"/></td>
             <td><input type="text" name="exam_grade" value ="${exam.exam_grade}"/></td>
     <td><input type="text" name="feedback" value ="${exam.feedback}"/></td>
-        <td><button type="submit">Edit Grade</button></td>
         </form>
     </tr>
 </c:forEach>
