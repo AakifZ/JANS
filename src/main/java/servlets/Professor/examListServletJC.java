@@ -19,27 +19,27 @@ public class examListServletJC extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        int user = 0;
-        if(session.getAttribute("user") != null) {
-            user = (int) session.getAttribute("user");
-
-        } else {
-            System.out.println("The user attribute is null");
-        }
-        try {
-            System.out.println("The logged in prof's id is: " + user);
-            List<exam> examList = pDAO.selectcoursesforexams(user);
-            for(int i = 0; i < examList.size(); i++) {
-                System.out.println(examList.get(i));
-            }
-            req.setAttribute("profExamList", examList);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("profExamList.jsp");
-            dispatcher.forward(req, resp);
-        } catch (Exception e) {
-            e.printStackTrace();
-            req.setAttribute("Error", "Invalid Login! Please try again.");
-            req.getRequestDispatcher("professorLoginPage.jsp").forward(req, resp);
-        }
+//        HttpSession session = req.getSession();
+//        int user = 0;
+//        if(session.getAttribute("user") != null) {
+//            user = (int) session.getAttribute("user");
+//
+//        } else {
+//            System.out.println("The user attribute is null");
+//        }
+//        try {
+//            System.out.println("The logged in prof's id is: " + user);
+//            List<exam> examList = pDAO.selectcoursesforexams(user);
+//            for(int i = 0; i < examList.size(); i++) {
+//                System.out.println(examList.get(i));
+//            }
+//            req.setAttribute("profExamList", examList);
+//            RequestDispatcher dispatcher = req.getRequestDispatcher("profExamList.jsp");
+//            dispatcher.forward(req, resp);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            req.setAttribute("Error", "Invalid Login! Please try again.");
+//            req.getRequestDispatcher("professorLoginPage.jsp").forward(req, resp);
+//        }
     }
 }

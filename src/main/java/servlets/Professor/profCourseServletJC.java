@@ -24,18 +24,18 @@ public class profCourseServletJC extends HttpServlet {
         HttpSession session = req.getSession();
         int user = 0;
         if(session.getAttribute("user") != null) {
-            user = (int) session.getAttribute("user");
+            user = Integer.parseInt(String.valueOf(session.getAttribute("user"))) ;
 
         } else {
             System.out.println("The user attribute is null");
         }
         try {
             System.out.println("The logged in prof's id is: " + user);
-            List<profCoursesJC> profCourseList = pDAO.selectAllCoursesforprofessor(user);
-            for(int i = 0; i < profCourseList.size(); i++) {
-                System.out.println(profCourseList.get(i));
+            List<profCoursesJC> courseList = pDAO.selectAllCoursesforprofessor(user);
+            for(int i = 0; i < courseList.size(); i++) {
+                System.out.println(courseList.get(i));
             }
-            req.setAttribute("profCourseList", profCourseList);
+            req.setAttribute("courseList", courseList);
             RequestDispatcher dispatcher = req.getRequestDispatcher("profCourseListJC.jsp");
             dispatcher.forward(req, resp);
         } catch (Exception e) {

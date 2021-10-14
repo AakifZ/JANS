@@ -13,11 +13,15 @@ import java.util.List;
 public class ExamDAO {
     Connection con = JDBC2.connection;
 
+    final static String Exam_BY_Course_ID_AND_Prof_ID = "Select exam.exam_number,exam.name,student_exam.exam_grade,exam.feedback, course.course_ID\n" +
+            "            from exam,student_exam,course,course_enrollment\n" +
+            "            Where exam.exam_number = student_exam.exam_number && course.course_ID = course_enrollment.course_ID && course.course_ID = ?\n" +
+            "            and course.professor_ID =?\n" +
+            "            ";
     final static String Exam_BY_ID = "Select exam.exam_number,exam.name,student_exam.exam_grade,exam.feedback, course.course_ID\n" +
             "from exam,student_exam,course,course_enrollment\n" +
             "Where exam.exam_number = student_exam.exam_number && course.course_ID = course_enrollment.course_ID && course.course_ID = ?\n" +
             "and course_enrollment.student_ID = ?";
-
     public List<StudentExam> selectAllStudentExams(int student_ID, int course_ID) {
         List<StudentExam> StudentExamList = new ArrayList<>();
 

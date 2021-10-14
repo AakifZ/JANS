@@ -8,6 +8,7 @@
 <%@ page import="objects.profCoursesJC"%>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <link href="CssFiles/stud_list.css" rel="stylesheet">
@@ -35,9 +36,13 @@
     </thead>
     <c:forEach var="courseList" items="${courseList}">
         <tr>
-            <td name="ID"><c:out value="${courseList.course_ID}"/></td>
-            <td><c:out value="${courseList.course_Name}"/></td>
-            <td><c:out value="${courseList.course_description}"/></td>
+
+            <form action="${pageContext.request.contextPath}/examList" method="post">
+                <td><input type="text" name="course_ID" value="${courseList.course_ID}"/></td>
+                <td><input type="text" name="course_name" value="${courseList.course_Name}"/></td>
+                <td><input type="text" name="course_description" value ="${courseList.course_description}"/></td>
+                <td><button type="submit">Edit Grade</button></td>
+            </form>
         </tr>
     </c:forEach>
 </table>
